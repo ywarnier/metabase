@@ -71,11 +71,17 @@
     #"^Password can not be null when the authentication mechanism is unspecified$"
     (driver.common/connection-error-messages :password-required)
 
-    #"^com.jcraft.jsch.JSchException: Auth fail$"
+    #"^org.apache.sshd.common.SshException: No more authentication methods available$"
     (driver.common/connection-error-messages :ssh-tunnel-auth-fail)
 
-    #".*JSchException: java.net.ConnectException: Connection refused.*"
+    #"^java.net.ConnectException: Connection refused$"
     (driver.common/connection-error-messages :ssh-tunnel-connection-fail)
+
+    #".*javax.net.ssl.SSLHandshakeException: PKIX path building failed.*"
+    (driver.common/connection-error-messages :certificate-not-trusted)
+
+    #".*MongoSocketReadException: Prematurely reached end of stream.*"
+    (driver.common/connection-error-messages :requires-ssl)
 
     #".*"                               ; default
     message))
