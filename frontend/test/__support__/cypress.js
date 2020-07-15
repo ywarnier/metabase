@@ -112,3 +112,31 @@ export function visitAlias(alias) {
     cy.visit(url);
   });
 }
+
+export function setupEmail() {
+  // Email info
+  cy.findByPlaceholderText("smtp.yourservice.com").type("localhost");
+  cy.findByPlaceholderText("587").type("1025");
+  cy.findByText("None").click();
+  // Leaves password and username blank
+  cy.findByPlaceholderText("metabase@yourcompany.com").type("test@local.host");
+
+  // *** Unnecessary click (Issue #12692)
+  cy.findByPlaceholderText("smtp.yourservice.com").click();
+
+  cy.findByText("Save changes").click();
+  cy.findByText("Changes saved!");
+
+  cy.findByText("Send test email").click();
+
+  // *** Will fail if test works correctly:
+  cy.wait(2000)
+    .findByText("Sent!")
+    .should("not.exist");
+
+  // *** Uncomment when test works correctly:
+  // cy.findByText("Sent!");
+  // cy.findByText("Sorry, something went wrong.  Please try again").should(
+  //   "not.exist",
+  // );
+}

@@ -5,6 +5,7 @@ import {
   signOut,
   signInAsNormalUser,
   signIn,
+  setupEmail,
 } from "__support__/cypress";
 
 const new_user = {
@@ -67,33 +68,7 @@ describe("smoketest > admin_setup", () => {
       cy.findByText("Email address you want to use as the sender of Metabase.");
       cy.findByText("Sample Database").should("not.exist");
 
-      // Email info
-      cy.findByPlaceholderText("smtp.yourservice.com").type("localhost");
-      cy.findByPlaceholderText("587").type("1025");
-      cy.findByText("None").click();
-      // Leaves password and username blank
-      cy.findByPlaceholderText("metabase@yourcompany.com").type(
-        "test@local.host",
-      );
-
-      // *** Unnecessary click (Issue #12692)
-      cy.findByPlaceholderText("smtp.yourservice.com").click();
-
-      cy.findByText("Save changes").click();
-      cy.findByText("Changes saved!");
-
-      cy.findByText("Send test email").click();
-
-      // *** Will fail if test works correctly:
-      cy.wait(2000)
-        .findByText("Sent!")
-        .should("not.exist");
-
-      // *** Uncomment when test works correctly:
-      // cy.findByText("Sent!");
-      // cy.findByText("Sorry, something went wrong.  Please try again").should(
-      //   "not.exist",
-      // );
+      setupEmail();
     });
 
     it("should setup Slack", () => {
