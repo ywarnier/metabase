@@ -29,6 +29,7 @@
             [toucan.db :as db]
             [toucan.util.test :as tt])
   (:import java.util.concurrent.TimeoutException
+           java.util.Locale
            org.apache.log4j.Logger
            [org.quartz CronTrigger JobDetail JobKey Scheduler Trigger]))
 
@@ -718,3 +719,18 @@
        {:ex-class (class e#)
         :msg      (.getMessage e#)
         :data     (ex-data e#)})))
+
+(defn call-with-locale
+  "Sets the default locale temporarily to `locale-tag`, then invokes `f` and reverts the locale change"
+  [locale-tag f]
+  (let [current-locale (Locale/getDefault)]
+    (try
+      (Locale/setDefault (Locale/forLanguageTag locale-tag))
+      (f)
+      (finally
+        (Locale/setDefault current-locale)))))
+
+(defmacro with-locale
+  "Allows a test to override the locale temporarily"
+  [locale-tag & body]
+  `(call-with-locale ~locale-tag (fn [] ~@body)))
