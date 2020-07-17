@@ -141,6 +141,7 @@ describe("metabase-smoketest > admin", () => {
         "Bar graph illustrating where our customers come from",
       );
 
+      cy.pause();
       // *** Cannot select 'My personal collection' (Issue #12718)
       // cy.findByText("Our analytics").click();
       // cy.findByText("My personal collection").click();

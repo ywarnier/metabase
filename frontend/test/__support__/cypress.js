@@ -81,6 +81,10 @@ export function openProductsTable() {
   cy.visit("/question/new?database=1&table=1");
 }
 
+export function openPeopleTable() {
+  cy.visit("/question/new?database=1&table=3");
+}
+
 export function setupLocalHostEmail() {
   // Email info
   cy.findByPlaceholderText("smtp.yourservice.com").type("localhost");
