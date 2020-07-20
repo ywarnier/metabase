@@ -3,21 +3,35 @@ import {
   signInAsAdmin,
   setupLocalHostEmail,
   openPeopleTable,
+  signInAsNormalUser,
+  deleteAlert,
+  createBasicAlert,
 } from "__support__/cypress";
-import { signInAsNormalUser, popover } from "../../../__support__/cypress";
 // Ported from alert.e2e.spec.js
 // *** We should also check that alerts can be set up through slack
 
 const raw_q_id = 1;
 const timeseries_q_id = 3;
-function deleteAlert(id) {
-  cy.request("DELETE", `/api/alert/${id}`);
-}
-function createBasicAlert() {
+
+function createGoalAlert() {
   cy.get(".Icon-bell").click();
   cy.findByText("Set up an alert").click();
+  cy.findByText("Goes above the goal line").click();
+  cy.findByText("Every time").click();
   cy.findByText("Done").click();
-  cy.findByText("Let's set up your alert").should("not.exist");
+}
+
+export function setGoal(number) {
+  cy.findByText("Settings").click();
+  cy.findByText("Line options");
+
+  cy.findByText("Goal line")
+    .next()
+    .click();
+  cy.get("input[value='0']")
+    .clear()
+    .type(number);
+  cy.findByText("Done").click();
 }
 
 describe("scenarios > alert", () => {
@@ -44,7 +58,7 @@ describe("scenarios > alert", () => {
 
   describe("with only email set", () => {
     before(() => {
-      // NOTE: Must run `python -m smtpd -n -c DebuggingServer localhost:1025` before this test
+      // NOTE: Must run `python -m smtpd -n -c DebuggingServer localhost:1025` before these tests
       signInAsAdmin();
       cy.visit("/admin/settings/email");
       setupLocalHostEmail();
@@ -76,90 +90,105 @@ describe("scenarios > alert", () => {
 
         cy.findByText("The wide world of alerts").should("not.exist");
 
-        deleteAlert(1);
+        deleteAlert(-1);
       });
     });
 
-    describe("types of alerts", () => {
+    describe.only("types of alerts", () => {
       it("should support 'rows present' alert for raw data questions", () => {
         cy.visit(`/question/${raw_q_id}`);
         cy.get(".Icon-table");
 
-        createBasicAlert();
+        createBasicAlert("first alert");
 
-        cy.request("/api/alert/").then(({ request }) => {
-          console.log("***request:", request);
-          expect(request.body[0].alert_condition).to.have.value("rows");
+        cy.request("/api/alert/").then(response => {
+          expect(response.body[0].alert_condition).to.have.equal("rows");
         });
-        deleteAlert(1);
+        deleteAlert(-1);
       });
+
       it("should support 'rows present' alert for timeseries questions without a goal", () => {
         cy.visit(`/question/${timeseries_q_id}`);
         cy.get(".Icon-line");
 
-        createBasicAlert();
+        createBasicAlert("first alert");
 
-        cy.request("/api/alert").then(({ request }) => {
-          expect(request.body[0].alert_condition).to.have.value("rows");
+        cy.request("api/alert").then(response => {
+          expect(response.body[0].alert_condition).to.have.equal("rows");
         });
         deleteAlert(1);
       });
+
       it("should work for timeseries questions with a set goal", () => {
         // Set goal on timeseries
         cy.visit(`/question/${timeseries_q_id}`);
-        cy.findByText("Settings").click();
-        cy.findByText("Line options");
-
-        cy.findByText("Goal line")
-          .next()
-          .click();
-        cy.get("input[value='0']")
-          .clear()
-          .type("7000");
-        cy.findByText("Done").click();
+        setGoal("7000");
 
         // Save question
         cy.findByText("Save").click();
         cy.findAllByText("Save")
           .last()
           .click();
+        cy.findByText("Save question").should("not.exist");
 
         // Create alert
-        cy.get(".Icon-bell").click();
-        cy.findByText("Set up an alert").click();
-        cy.findByText("Goes above the goal line").click();
-        cy.findByText("Every time").click();
-        cy.findByText("Done").click();
+        createGoalAlert();
 
-        cy.request("/api/alert/").then(({ request }) => {
-          expect(request.body[0].alert_condition).to.have.value("goal");
+        cy.request("/api/alert/").then(response => {
+          expect(response.body[0].alert_condition).to.have.equal("goal");
         });
         deleteAlert(1);
       });
-      it.only("should fall back to raw data alert and show a warning for time-multiseries questions with a set goal", () => {
+
+      it("should fall back to raw data alert and show a warning for time-multiseries questions with a set goal", () => {
         // Create a time-multiseries q
         openPeopleTable();
         cy.findByText("Summarize").click();
-        cy.findByText("Source").click();
-        popover()
-          .find("Created At")
-          .trigger("mouseover");
-        popover.get(".Icon-close").click();
-        // Make alert
-        // Set a goal
-        // Check that alert has changed to raw data/ is no longer 'goal'
-      });
-    });
+        cy.findByText("Group by");
+        cy.contains("Doing science").then(() => {
+          cy.findByText("Doing science")
+            .should("not.exist")
+            .then(() => {
+              cy.findByText("Person");
+              cy.findByText("Summarize by")
+                .parent()
+                .parent()
+                .get(".Icon-calendar")
+                .last()
+                .scrollIntoView()
+                .then(() => {
+                  cy.findByText("Source").click();
+                  cy.findByText("Created At")
+                    .parent()
+                    .parent()
+                    .parent()
+                    .within(() => {
+                      cy.get(".Icon-add").click({ force: true });
+                    });
+                });
+            });
+        });
+        cy.findByText("Done").click();
 
-    describe("alert list for a question", () => {
-      describe("as an admin", () => {
-        it("should let you see all created alerts", () => {});
-        it("should let you edit an alert", () => {});
-      });
-      describe("as a non-admin / normal user", () => {
-        it("should let you see your own alerts", () => {});
-        it("should let you see also other alerts where you are a recipient", () => {});
-        it("should let you unsubscribe from both your own and others' alerts", () => {});
+        // Set a goal
+        setGoal("35");
+        cy.findByText("Save").click();
+        cy.findAllByText("Save")
+          .last()
+          .click();
+        cy.findByText("Not now").click();
+
+        // Create Alert
+        createGoalAlert();
+        cy.findByText("Your alert is all set up.")
+          .parent()
+          .find(".Icon-close")
+          .click();
+
+        // Check that alert has changed to raw data/ is not 'goal'
+        cy.request("/api/alert/").then(({ request }) => {
+          expect(request.body[0].alert_condition).not.to.have.value("goal");
+        });
       });
     });
   });

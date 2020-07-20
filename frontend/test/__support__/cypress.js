@@ -133,3 +133,28 @@ export function visitAlias(alias) {
     cy.visit(url);
   });
 }
+
+export function deleteAlert(id) {
+  cy.requst("GET", `/api/alert`).then(response => {
+    actual_id = response.body[id].id;
+    cy.request("PUT", `/api/alert/${actual_id}/unsubscribe`);
+  });
+}
+
+export function createBasicAlert(variable) {
+  cy.get(".Icon-bell").click();
+  if (variable == "first alert") {
+    cy.findByText("Set up an alert").click();
+  }
+  cy.findByText("Let's set up your alert");
+  if (variable == "include normal") {
+    cy.findByText("Email alerts to:")
+      .parent()
+      .children()
+      .last()
+      .click();
+    cy.findByText("Robert Tableton").click();
+  }
+  cy.findByText("Done").click();
+  cy.findByText("Let's set up your alert").should("not.exist");
+}
