@@ -13,14 +13,6 @@ import {
 const raw_q_id = 1;
 const timeseries_q_id = 3;
 
-function createGoalAlert() {
-  cy.get(".Icon-bell").click();
-  cy.findByText("Set up an alert").click();
-  cy.findByText("Goes above the goal line").click();
-  cy.findByText("Every time").click();
-  cy.findByText("Done").click();
-}
-
 export function setGoal(number) {
   cy.findByText("Settings").click();
   cy.findByText("Line options");
@@ -63,13 +55,31 @@ describe("scenarios > alert", () => {
       cy.visit("/admin/settings/email");
       setupLocalHostEmail();
       cy.server();
-
-      // *** Check creation of api
-      // cy.route("POST", "/api/alert").as("alertCreation");
     });
 
     it("should let admins create alerts", () => {
-      // Use api call here
+      // *** Use api call here
+      // cy.request("POST", "api/alert", {
+      //   alert_condition: "rows",
+      //   card: {
+      //     id: 1,
+      //     include_csv: true,
+      //     include_xls: false,
+      //   },
+      //   channels: [{
+      //     schedule_type: "daily",
+      //     channel_type: "email",
+      //     recipients: [{
+      //       id: 1,
+      //       email: "admin@metabase.com",
+      //       first_name: "Bobby",
+      //       last_name: "Tables",
+      //       common_name: "Bobby Tables"
+      //     }],
+      //   }],
+      //   alert_first_only: "false",
+      // });
+      // cy.visit("/question/1");
     });
 
     describe("educational screen", () => {
@@ -89,36 +99,44 @@ describe("scenarios > alert", () => {
         cy.get(".Icon-bell").click();
 
         cy.findByText("The wide world of alerts").should("not.exist");
-
-        deleteAlert(-1);
       });
     });
+  });
 
-    describe.only("types of alerts", () => {
-      it("should support 'rows present' alert for raw data questions", () => {
+  describe("types of alerts", () => {
+    before(() => {
+      restore();
+      signInAsAdmin();
+      cy.visit("/admin/settings/email");
+      setupLocalHostEmail();
+      cy.server();
+    });
+
+    describe("'rows present' alert", () => {
+      it("should be supported for raw data questions ", () => {
         cy.visit(`/question/${raw_q_id}`);
         cy.get(".Icon-table");
 
         createBasicAlert("first alert");
 
         cy.request("/api/alert/").then(response => {
-          expect(response.body[0].alert_condition).to.have.equal("rows");
+          expect(response.body[0].alert_condition).to.equal("rows");
         });
-        deleteAlert(-1);
       });
 
-      it("should support 'rows present' alert for timeseries questions without a goal", () => {
+      it("should be supported for timeseries questions without a goal", () => {
         cy.visit(`/question/${timeseries_q_id}`);
         cy.get(".Icon-line");
 
         createBasicAlert("first alert");
 
         cy.request("api/alert").then(response => {
-          expect(response.body[0].alert_condition).to.have.equal("rows");
+          expect(response.body[1].alert_condition).to.equal("rows");
         });
-        deleteAlert(1);
       });
+    });
 
+    describe("'goal' alert", () => {
       it("should work for timeseries questions with a set goal", () => {
         // Set goal on timeseries
         cy.visit(`/question/${timeseries_q_id}`);
@@ -132,42 +150,48 @@ describe("scenarios > alert", () => {
         cy.findByText("Save question").should("not.exist");
 
         // Create alert
-        createGoalAlert();
+        cy.get(".Icon-bell").click();
+        cy.findByText("Edit").click();
+        cy.findByText("Goes above the goal line").click();
+        cy.findByText("Every time").click();
+        cy.findByText("Save changes").click();
 
+        // Check api call
         cy.request("/api/alert/").then(response => {
-          expect(response.body[0].alert_condition).to.have.equal("goal");
+          expect(response.body[1].alert_condition).to.equal("goal");
         });
-        deleteAlert(1);
       });
+    });
 
-      it("should fall back to raw data alert and show a warning for time-multiseries questions with a set goal", () => {
+    describe("time-multiseries questions with a set goal", () => {
+      it("should fall back to raw data alert and show a warning", () => {
         // Create a time-multiseries q
         openPeopleTable();
         cy.findByText("Summarize").click();
         cy.findByText("Group by");
-        cy.contains("Doing science").then(() => {
-          cy.findByText("Doing science")
-            .should("not.exist")
-            .then(() => {
-              cy.findByText("Person");
-              cy.findByText("Summarize by")
-                .parent()
-                .parent()
-                .get(".Icon-calendar")
-                .last()
-                .scrollIntoView()
-                .then(() => {
-                  cy.findByText("Source").click();
-                  cy.findByText("Created At")
-                    .parent()
-                    .parent()
-                    .parent()
-                    .within(() => {
-                      cy.get(".Icon-add").click({ force: true });
-                    });
-                });
-            });
-        });
+        // cy.contains("Doing science").then(() => {
+        cy.findByText("Doing science")
+          .should("not.exist")
+          .then(() => {
+            cy.findByText("Person");
+            cy.findByText("Summarize by")
+              .parent()
+              .parent()
+              .get(".Icon-calendar")
+              .last()
+              .scrollIntoView()
+              .then(() => {
+                cy.findByText("Source").click();
+                cy.findByText("Created At")
+                  .parent()
+                  .parent()
+                  .parent()
+                  .within(() => {
+                    cy.get(".Icon-add").click({ force: true });
+                  });
+              });
+            // });
+          });
         cy.findByText("Done").click();
 
         // Set a goal
@@ -179,15 +203,19 @@ describe("scenarios > alert", () => {
         cy.findByText("Not now").click();
 
         // Create Alert
-        createGoalAlert();
+        cy.get(".Icon-bell").click();
+        cy.findByText("Set up an alert").click();
+        cy.findByText("Goes above the goal line").click();
+        cy.findByText("Every time").click();
+        cy.findByText("Done").click();
         cy.findByText("Your alert is all set up.")
           .parent()
           .find(".Icon-close")
           .click();
 
         // Check that alert has changed to raw data/ is not 'goal'
-        cy.request("/api/alert/").then(({ request }) => {
-          expect(request.body[0].alert_condition).not.to.have.value("goal");
+        cy.request("/api/alert/").then(response => {
+          expect(response.body[0].alert_condition).to.equal("rows");
         });
       });
     });

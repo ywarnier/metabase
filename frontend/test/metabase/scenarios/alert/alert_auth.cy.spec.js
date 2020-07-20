@@ -36,9 +36,9 @@ describe("scenarios > alert > auth for alerts", () => {
     beforeEach(signInAsAdmin);
 
     it("should let you see all created alerts", () => {
-      // Check that both alerts are there
-      // **** Still needs to happen
-      cy.visit("/");
+      cy.request("/api/alert").then(response => {
+        expect(response.body).to.have.length(3);
+      });
     });
 
     it("should let you edit an alert", () => {
@@ -51,7 +51,9 @@ describe("scenarios > alert > auth for alerts", () => {
       cy.findByText("Save changes").click();
 
       // Check that changes stuck
-      cy.wait(1000);
+      cy.request("api/alert").then(response => {
+        expect(response.body[0].channels[0].schedule_type).to.equal("weekly");
+      });
       // *** code here
 
       // Change alert back
