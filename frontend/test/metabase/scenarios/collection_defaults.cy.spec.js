@@ -49,7 +49,7 @@ describe("scenarios > collection_defaults", () => {
         });
 
         // Check that it has no parent
-        let length = 7;
+        const length = 7;
         cy.request("api/collection").then(response => {
           expect(response.body).to.have.length(length);
           expect(response.body[length - 1].name).to.equal(collection_name);
