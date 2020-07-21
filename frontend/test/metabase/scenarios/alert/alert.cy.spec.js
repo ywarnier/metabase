@@ -4,10 +4,9 @@ import {
   setupLocalHostEmail,
   openPeopleTable,
   signInAsNormalUser,
-  deleteAlert,
   createBasicAlert,
+  popover,
 } from "__support__/cypress";
-import { popover } from "../../../__support__/cypress";
 // Ported from alert.e2e.spec.js
 // *** We should also check that alerts can be set up through slack
 

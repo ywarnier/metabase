@@ -134,13 +134,6 @@ export function visitAlias(alias) {
   });
 }
 
-export function deleteAlert(array_num) {
-  cy.request("GET", `/api/alert`).then(response => {
-    actual_id = response.body[array_num].id;
-    cy.request("PUT", `/api/alert/${actual_id}/unsubscribe`);
-  });
-}
-
 export function createBasicAlert(variable) {
   cy.get(".Icon-bell").click();
   if (variable == "first alert") {
