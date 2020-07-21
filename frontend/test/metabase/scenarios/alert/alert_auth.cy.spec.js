@@ -42,6 +42,9 @@ describe("scenarios > alert > auth for alerts", () => {
     });
 
     it("should let you edit an alert", () => {
+      cy.server();
+      cy.route("PUT", "/api/alert/1").as("savedQuestion");
+
       // Change alert
       cy.visit(`/question/1`);
       cy.get(".Icon-bell").click();
@@ -51,10 +54,10 @@ describe("scenarios > alert > auth for alerts", () => {
       cy.findByText("Save changes").click();
 
       // Check that changes stuck
+      cy.wait("@savedQuestion");
       cy.request("api/alert").then(response => {
         expect(response.body[0].channels[0].schedule_type).to.equal("weekly");
       });
-      // *** code here
 
       // Change alert back
       cy.get(".Icon-bell").click();
