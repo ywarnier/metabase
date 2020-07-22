@@ -5,6 +5,11 @@ import { signInAsAdmin, modal, popover, restore } from "__support__/cypress";
 describe("scenarios > dashboard > parameters", () => {
   before(restore);
   beforeEach(signInAsAdmin);
+
+  it("should be hideable", () => {
+    // *** code here
+  });
+  it("should be seeable if previously added", () => {});
   it("should search across multiple fields", () => {
     // create a new dashboard
     cy.visit("/");
