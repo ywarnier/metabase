@@ -6,9 +6,19 @@
 //     ("shows previously added parameter",
 import { restore, signInAsAdmin, popover } from "../../../__support__/cypress";
 
+function saveDashboard() {
+  cy.findByText("Save").click();
+  cy.findByText("Saving…");
+  cy.findByText("Saving…").should("not.exist");
+}
+
 describe("scenarios > dashboard", () => {
-  before(restore);
-  beforeEach(signInAsAdmin);
+  beforeEach(() => {
+    restore();
+    signInAsAdmin();
+  });
+
+  it("should create new dashboard", () => {});
 
   it("should change title and description", () => {
     cy.visit("/dashboard/1");
@@ -33,22 +43,58 @@ describe("scenarios > dashboard", () => {
     cy.findByText("Location").click();
     cy.findByText("State").click();
     cy.findByText("Select…").click();
-    popover().within(() => {
-      cy.findByText("State").click();
-    });
-    cy.findByText("Done").click();
-    cy.findByText("Save").click();
+    // *** having trouble actually selecting this item
+    cy.get(".PopoverContainer .List-item")
+      .invoke("trigger")
+      .click();
     cy.pause();
-    cy.findByText("You are editing a dashboard").should("not.exist");
+    cy.findByText("Done").click();
+    saveDashboard();
 
     cy.get(".DashCard").click();
-    cy.pause();
   });
-  it("should add a question", () => {});
-  it("should add a card", () => {});
-  it("should duplicate a dashboard", () => {});
+
+  it("should add a question", () => {
+    cy.visit("/dashboard/1");
+    cy.get(".QueryBuilder-section .Icon-add").click();
+    cy.findByText("Orders, Count").click();
+    saveDashboard();
+
+    cy.findByText("Orders, Count");
+  });
+
+  it("should duplicate a dashboard", () => {
+    cy.visit("/dashboard/1");
+    cy.findByText("Orders in a dashboard");
+    cy.get(".Icon-clone").click();
+    cy.findByPlaceholderText("What is the name of your dashboard?")
+      .clear()
+      .type("Duplicate Dashboard");
+    cy.findByText("Duplicate").click();
+
+    cy.findByText("Orders in a dashboard").should("not.exist");
+    cy.findByText("Duplicate Dashboard");
+  });
+
   describe("revisions screen", () => {
-    it("should open and close", () => {});
-    it("should open with url", () => {});
+    it("should open and close", () => {
+      // open
+      cy.visit("/dashboard/1");
+      cy.get(".Icon-pencil").click();
+      cy.get(".Icon-history").click();
+
+      cy.findAllByText("Revision history");
+      cy.findByText("When");
+      cy.contains("Today");
+
+      // close
+      cy.get(".ModalContent .Icon-close").click();
+      cy.findByText("Revision history").should("not.exist");
+    });
+
+    it("should open with url", () => {
+      cy.visit("/dashboard/1/history");
+      cy.findAllByText("Revision history");
+    });
   });
 });
