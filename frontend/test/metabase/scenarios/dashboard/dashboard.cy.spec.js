@@ -7,7 +7,7 @@
 import { restore, signInAsAdmin, popover } from "../../../__support__/cypress";
 
 function saveDashboard() {
-  cy.findByText("Save").click();
+  cy.findByText("Save").click({ force: true });
   cy.findByText("Saving…");
   cy.findByText("Saving…").should("not.exist");
 }
@@ -18,7 +18,23 @@ describe("scenarios > dashboard", () => {
     signInAsAdmin();
   });
 
-  it("should create new dashboard", () => {});
+  it("should create new dashboard", () => {
+    // Create dashboard
+    cy.visit("/");
+    cy.get(".Icon-add").click();
+    cy.findByText("New dashboard").click();
+    cy.findByPlaceholderText("What is the name of your dashboard?")
+      .type("Test Dashboard");
+    cy.findByPlaceholderText("It's optional but oh, so helpful")
+      .type("Test description for dashboard.");
+    cy.findByText("Create").click();
+    cy.findByText("This dashboard is looking empty.");
+
+    // See it as a listed dashboard
+    cy.visit("/collection/root?type=dashboard");
+    cy.findByText("This dashboard is looking empty.").should("not.exist");
+    cy.findByText("Test Dashboard");
+  });
 
   it("should change title and description", () => {
     cy.visit("/dashboard/1");
@@ -43,11 +59,9 @@ describe("scenarios > dashboard", () => {
     cy.findByText("Location").click();
     cy.findByText("State").click();
     cy.findByText("Select…").click();
-    // *** having trouble actually selecting this item
-    cy.get(".PopoverContainer .List-item")
-      .invoke("trigger")
-      .click();
-    cy.pause();
+    cy.get(".PopoverContainer .cursor-pointer")
+      .click({ force: true });
+    cy.get(".Icon-close");
     cy.findByText("Done").click();
     saveDashboard();
 
