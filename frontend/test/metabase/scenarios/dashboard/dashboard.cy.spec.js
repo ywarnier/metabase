@@ -1,10 +1,5 @@
-// *** What does this do? Is this covered in `parameters-embedded.cy.spec`?
-// ("fetchDashboard(...)", () => {
-//     ("should add the parameter values to state tree for public dashboards",
-// *** below is in `parameters.cy.spec`
-//     ("hides parameters named in 'hide_parameters' option",
-//     ("shows previously added parameter",
 import { restore, signInAsAdmin, popover } from "../../../__support__/cypress";
+// Mostly ported from `dashboard.e2e.spec.js`
 
 function saveDashboard() {
   cy.findByText("Save").click({ force: true });
@@ -23,10 +18,12 @@ describe("scenarios > dashboard", () => {
     cy.visit("/");
     cy.get(".Icon-add").click();
     cy.findByText("New dashboard").click();
-    cy.findByPlaceholderText("What is the name of your dashboard?")
-      .type("Test Dashboard");
-    cy.findByPlaceholderText("It's optional but oh, so helpful")
-      .type("Test description for dashboard.");
+    cy.findByPlaceholderText("What is the name of your dashboard?").type(
+      "Test Dashboard",
+    );
+    cy.findByPlaceholderText("It's optional but oh, so helpful").type(
+      "Test description for dashboard.",
+    );
     cy.findByText("Create").click();
     cy.findByText("This dashboard is looking empty.");
 
@@ -59,8 +56,7 @@ describe("scenarios > dashboard", () => {
     cy.findByText("Location").click();
     cy.findByText("State").click();
     cy.findByText("Select…").click();
-    cy.get(".PopoverContainer .cursor-pointer")
-      .click({ force: true });
+    cy.get(".PopoverContainer .cursor-pointer").click({ force: true });
     cy.get(".Icon-close");
     cy.findByText("Done").click();
     saveDashboard();
@@ -88,6 +84,11 @@ describe("scenarios > dashboard", () => {
 
     cy.findByText("Orders in a dashboard").should("not.exist");
     cy.findByText("Duplicate Dashboard");
+  });
+
+  it.only("should add the parameter values to state tree for public dashboards", () => {
+    cy.visit("/");
+    cy.pause();
   });
 
   describe("revisions screen", () => {
