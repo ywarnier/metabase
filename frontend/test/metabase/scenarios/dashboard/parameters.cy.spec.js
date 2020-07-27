@@ -9,7 +9,7 @@ describe("scenarios > dashboard > parameters", () => {
   it("should be hideable", () => {
     // *** code here
     cy.visit("/");
-    cy.pause();
+    // cy.pause();
   });
 
   it("should be seeable if previously added", () => {
