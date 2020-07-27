@@ -140,7 +140,7 @@ export function createBasicAlert(variable) {
     cy.findByText("Set up an alert").click();
   }
   cy.findByText("Let's set up your alert");
-  if (variable == "include normal") {
+  if (variable === "include normal") {
     cy.findByText("Email alerts to:")
       .parent()
       .children()
