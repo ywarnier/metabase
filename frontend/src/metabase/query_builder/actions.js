@@ -48,6 +48,7 @@ import {
   getIsRunning,
   getNativeEditorCursorOffset,
   getNativeEditorSelectedText,
+  getSnippetCollectionId,
 } from "./selectors";
 
 import { MetabaseApi, CardApi, UserApi } from "metabase/services";
@@ -68,7 +69,7 @@ import Snippets from "metabase/entities/snippets";
 import { getMetadata } from "metabase/selectors/metadata";
 import { setRequestUnloaded } from "metabase/redux/requests";
 
-import type { Card } from "metabase/meta/types/Card";
+import type { Card } from "metabase-types/types/Card";
 
 type UiControls = {
   isEditing?: boolean,
@@ -569,9 +570,15 @@ export const setNativeEditorSelectedRange = createAction(
 export const SET_MODAL_SNIPPET = "metabase/qb/SET_MODAL_SNIPPET";
 export const setModalSnippet = createAction(SET_MODAL_SNIPPET);
 
+export const SET_SNIPPET_COLLECTION_ID =
+  "metabase/qb/SET_SNIPPET_COLLECTION_ID";
+export const setSnippetCollectionId = createAction(SET_SNIPPET_COLLECTION_ID);
+
 export const openSnippetModalWithSelectedText = () => (dispatch, getState) => {
-  const content = getNativeEditorSelectedText(getState());
-  dispatch(setModalSnippet({ content }));
+  const state = getState();
+  const content = getNativeEditorSelectedText(state);
+  const collection_id = getSnippetCollectionId(state);
+  dispatch(setModalSnippet({ content, collection_id }));
 };
 
 export const closeSnippetModal = () => (dispatch, getState) => {

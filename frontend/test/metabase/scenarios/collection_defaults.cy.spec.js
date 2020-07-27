@@ -32,6 +32,9 @@ function createPulse() {
 
 describe("scenarios > collection_defaults", () => {
   before(() => {
+    // if (window.Cypress) {
+    //   event.preventDefault();
+    // }
     restore();
     cy.server();
   });

@@ -81,6 +81,23 @@ export function openProductsTable() {
   cy.visit("/question/new?database=1&table=1");
 }
 
+export function setupLocalHostEmail() {
+  // Email info
+  cy.findByPlaceholderText("smtp.yourservice.com").type("localhost");
+  cy.findByPlaceholderText("587").type("1025");
+  cy.findByText("None").click();
+  // Leaves password and username blank
+  cy.findByPlaceholderText("metabase@yourcompany.com").type("test@local.host");
+
+  // *** Unnecessary click (Issue #12692)
+  cy.findByPlaceholderText("smtp.yourservice.com").click();
+
+  cy.findByText("Save changes").click();
+  cy.findByText("Changes saved!");
+
+  cy.findByText("Send test email").click();
+}
+
 // Find a text field by label text, type it in, then blur the field.
 // Commonly used in our Admin section as we auto-save settings.
 export function typeAndBlurUsingLabel(label, value) {
@@ -113,6 +130,7 @@ export function visitAlias(alias) {
   });
 }
 
+<<<<<<< HEAD
 export function setupEmail() {
   // Email info
   cy.findByPlaceholderText("smtp.yourservice.com").type("localhost");
@@ -139,4 +157,17 @@ export function setupEmail() {
   // cy.findByText("Sorry, something went wrong.  Please try again").should(
   //   "not.exist",
   // );
+=======
+export function createNativeQuestion(name, query) {
+  return cy.request("POST", "/api/card", {
+    name,
+    dataset_query: {
+      type: "native",
+      native: { query },
+      database: 1,
+    },
+    display: "table",
+    visualization_settings: {},
+  });
+>>>>>>> 9f64c0137ea8b6af87847cf860ff5aa30fca04d2
 }
