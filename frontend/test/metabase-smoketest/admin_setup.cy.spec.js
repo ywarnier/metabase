@@ -5,11 +5,7 @@ import {
   signOut,
   signInAsNormalUser,
   signIn,
-<<<<<<< HEAD
   setupEmail,
-=======
-  setupLocalHostEmail,
->>>>>>> 9f64c0137ea8b6af87847cf860ff5aa30fca04d2
 } from "__support__/cypress";
 
 const new_user = {
@@ -72,22 +68,7 @@ describe("smoketest > admin_setup", () => {
       cy.findByText("Email address you want to use as the sender of Metabase.");
       cy.findByText("Sample Database").should("not.exist");
 
-<<<<<<< HEAD
       setupEmail();
-=======
-      setupLocalHostEmail();
-
-      // *** Will fail if test works correctly:
-      cy.wait(2000)
-        .findByText("Sent!")
-        .should("not.exist");
-
-      // *** Uncomment when test works correctly:
-      // cy.findByText("Sent!");
-      // cy.findByText("Sorry, something went wrong.  Please try again").should(
-      //   "not.exist",
-      // );
->>>>>>> 9f64c0137ea8b6af87847cf860ff5aa30fca04d2
     });
 
     it.skip("should setup Slack", () => {
