@@ -1,5 +1,6 @@
 import { restore, signInAsAdmin, popover } from "../../../__support__/cypress";
 // Mostly ported from `dashboard.e2e.spec.js`
+// *** Haven't ported: should add the parameter values to state tree for public dashboards
 
 function saveDashboard() {
   cy.findByText("Save").click({ force: true });
@@ -84,11 +85,6 @@ describe("scenarios > dashboard", () => {
 
     cy.findByText("Orders in a dashboard").should("not.exist");
     cy.findByText("Duplicate Dashboard");
-  });
-
-  it.only("should add the parameter values to state tree for public dashboards", () => {
-    cy.visit("/");
-    cy.pause();
   });
 
   describe("revisions screen", () => {
