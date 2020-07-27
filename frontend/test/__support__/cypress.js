@@ -136,7 +136,7 @@ export function visitAlias(alias) {
 
 export function createBasicAlert(variable) {
   cy.get(".Icon-bell").click();
-  if (variable == "first alert") {
+  if (variable === "first alert") {
     cy.findByText("Set up an alert").click();
   }
   cy.findByText("Let's set up your alert");
