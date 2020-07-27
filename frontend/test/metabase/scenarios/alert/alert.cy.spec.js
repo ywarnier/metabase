@@ -184,7 +184,7 @@ describe("scenarios > alert", () => {
       // Create Alert
       cy.get(".Icon-bell").click();
       cy.findByText("Set up an alert").click();
-      // *** This below warning is not showing when we try to make an alert
+      // *** This below warning is not showing when we try to make an alert (Issue #???)
       cy.contains(
         "Goal-based alerts aren't yet supported for charts with more than one line",
       );
