@@ -1,7 +1,7 @@
 import {
   restore,
   signInAsAdmin,
-  setupLocalHostEmail,
+  setupEmail,
 } from "../../../__support__/cypress";
 
 function setUpHourlyAlert(question_num) {
@@ -32,7 +32,7 @@ describe("scenarios > alert > email_alert", () => {
 
       cy.visit("/admin/settings/email");
       cy.findByText("SMTP Host");
-      setupLocalHostEmail();
+      setupEmail();
     });
 
     it("should work with email alerts toggled on", () => {
