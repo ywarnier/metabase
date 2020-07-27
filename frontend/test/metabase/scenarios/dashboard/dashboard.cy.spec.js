@@ -1,4 +1,4 @@
-import { restore, signInAsAdmin, popover } from "../../../__support__/cypress";
+import { restore, signInAsAdmin } from "../../../__support__/cypress";
 // Mostly ported from `dashboard.e2e.spec.js`
 // *** Haven't ported: should add the parameter values to state tree for public dashboards
 
