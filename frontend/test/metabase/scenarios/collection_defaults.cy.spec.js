@@ -33,7 +33,6 @@ function createPulse() {
 describe("scenarios > collection_defaults", () => {
   before(() => {
     restore();
-    cy.server();
   });
 
   describe("for admins", () => {
