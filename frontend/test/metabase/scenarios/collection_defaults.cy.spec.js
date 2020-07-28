@@ -39,14 +39,16 @@ describe("scenarios > collection_defaults", () => {
     beforeEach(signInAsAdmin);
 
     describe("a new collection", () => {
-      it("should be the parent collection", () => {
-        // Make new collection
+      before(() => {
+        signInAsAdmin();
         cy.request("POST", "api/collection/", {
           name: collection_name,
           color: "#ff9a9a",
           personal_owner_id: 1,
         });
+      });
 
+      it("should be the parent collection", () => {
         // Check that it has no parent
         const length = 7;
         cy.request("api/collection").then(response => {
@@ -54,6 +56,11 @@ describe("scenarios > collection_defaults", () => {
           expect(response.body[length - 1].name).to.equal(collection_name);
           expect(response.body[length - 1].location).to.equal("/");
         });
+      });
+
+      it("should see within parent in UI", () => {
+        cy.visit("/collection/root");
+        cy.findByText(collection_name);
       });
 
       it("should be a sub collection", () => {
@@ -72,6 +79,14 @@ describe("scenarios > collection_defaults", () => {
           expect(response.body[length - 1].name).to.equal(sub_collection_name);
           expect(response.body[length - 1].location).to.equal("/1/");
         });
+      });
+
+      it("should see sub collection in UI", () => {
+        cy.visit("/collection/root");
+        cy.findByText(sub_collection_name).should("not.exist");
+
+        cy.visit("/collection/1");
+        cy.findByText(sub_collection_name);
       });
     });
 
@@ -125,9 +140,8 @@ describe("scenarios > collection_defaults", () => {
 
         // Check for pulse in root collection
         cy.visit("/collection/root");
-        cy.findByText("My personal collection").then(() => {
-          cy.get(".Icon-pulse");
-        });
+        cy.findByText("My personal collection");
+        cy.get(".Icon-pulse");
       });
     });
 
