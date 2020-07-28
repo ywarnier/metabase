@@ -20,11 +20,11 @@ describe("scenarios > alert > auth for alerts", () => {
 
     // Create alert as admin
     cy.visit("/question/1");
-    createBasicAlert("first alert");
+    createBasicAlert({ firstAlert: true });
 
     // Create alert as admin that user can see
     cy.visit("/question/2");
-    createBasicAlert("include normal");
+    createBasicAlert({ includeNormal: true });
 
     // Create alert as normal user
     signInAsNormalUser();

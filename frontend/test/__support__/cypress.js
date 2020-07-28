@@ -134,13 +134,13 @@ export function visitAlias(alias) {
   });
 }
 
-export function createBasicAlert(variable) {
+export function createBasicAlert({ firstAlert, includeNormal } = {}) {
   cy.get(".Icon-bell").click();
-  if (variable === "first alert") {
+  if (firstAlert) {
     cy.findByText("Set up an alert").click();
   }
   cy.findByText("Let's set up your alert");
-  if (variable === "include normal") {
+  if (includeNormal) {
     cy.findByText("Email alerts to:")
       .parent()
       .children()

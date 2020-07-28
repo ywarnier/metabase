@@ -89,7 +89,7 @@ describe("scenarios > alert", () => {
         cy.visit(`/question/${raw_q_id}`);
         cy.get(".Icon-table");
 
-        createBasicAlert("first alert");
+        createBasicAlert({ firstAlert: true });
 
         cy.request("/api/alert/").then(response => {
           expect(response.body[0].alert_condition).to.equal("rows");
@@ -100,7 +100,7 @@ describe("scenarios > alert", () => {
         cy.visit(`/question/${timeseries_q_id}`);
         cy.get(".Icon-line");
 
-        createBasicAlert("first alert");
+        createBasicAlert({ firstAlert: true });
 
         cy.request("api/alert").then(response => {
           expect(response.body[1].alert_condition).to.equal("rows");
