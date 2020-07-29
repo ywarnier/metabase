@@ -25,14 +25,22 @@ describe("scenarios > alert > email_alert", () => {
     });
   });
 
-  describe.skip("alert set up", () => {
+  describe("alert set up", () => {
     // NOTE: To run tests, first run `python -m smtpd -n -c DebuggingServer localhost:1025` in your terminal
     beforeEach(() => {
       cy.server();
 
       cy.visit("/admin/settings/email");
       cy.findByText("SMTP Host");
-      setupEmail();
+      // *** setupEmail();
+      signInAsAdmin();
+      cy.request("PUT", "/api/email", {
+        settings: {
+          "email-smtp-host": "localhost",
+          "email-smtp-port": "1025",
+          "email-from-address": "test@local.host",
+        },
+      });
     });
 
     it("should work with email alerts toggled on", () => {
@@ -51,7 +59,7 @@ describe("scenarios > alert > email_alert", () => {
       });
     });
 
-    it("should have email alerts toggled off (Issue #12349)", () => {
+    it.skip("should have email alerts toggled off (Issue #12349)", () => {
       // Turn off email alerts during alert setup
       setUpHourlyAlert(2);
       cy.findByText("Email")
