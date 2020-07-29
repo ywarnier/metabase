@@ -9,35 +9,37 @@ function addTextBox(string) {
 }
 
 describe("scenarios > dashboard > text-box", () => {
-  
+  before(restore);
+
   describe("Editing", () => {
-    beforeEach(signInAsAdmin)
+    beforeEach(() => {
+      restore();
+      signInAsAdmin();
+
+      // Create text box card
+      cy.visit("/dashboard/1");
+      addTextBox("Text *text* __text__");
+    });
 
     it("should render edit and preview actions when editing", () => {
-      // Create card
-      cy.visit("/dashboard/1");
-      addTextBox("Text text text");
-
       // Check edit options
       cy.get(".Icon-edit_document");
-      cy.get(".Icon-eye")
+      cy.get(".Icon-eye");
     });
 
     it("should not render edit and preview actions when not editing", () => {
-      // Create card
-      cy.visit("/dashboard/1");
-      addTextBox("Text text text");
-      
       // Exit edit mode and check for edit options
       cy.findByText("Save").click();
       cy.findByText("You are editing a dashboard").should("not.exist");
-      cy.findByText("Text text text");
+      cy.contains("Text text text");
       cy.get(".Icon-edit_document").should("not.exist");
       cy.get(".Icon-eye").should("not.exist");
     });
 
     it("should switch between rendered markdown and textarea input", () => {
-      // *** code here
+      cy.findByText("Text *text* __text__");
+      cy.findByText("Save").click();
+      cy.contains("Text text text");
     });
   });
 
