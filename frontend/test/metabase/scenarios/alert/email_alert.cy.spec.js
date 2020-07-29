@@ -38,7 +38,7 @@ describe("scenarios > alert > email_alert", () => {
         settings: {
           "email-smtp-host": "localhost",
           "email-smtp-port": "1025",
-          "email-from-address": "test@local.host",
+          "email-from-address": "test@metabase.test",
         },
       });
     });
