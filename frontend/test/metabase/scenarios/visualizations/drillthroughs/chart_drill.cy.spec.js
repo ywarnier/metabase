@@ -1,6 +1,12 @@
-import { signInAsAdmin, restore, withSampleDataset } from "__support__/cypress";
+import {
+  signInAsAdmin,
+  restore,
+  withSampleDataset,
+  openProductsTable,
+  sidebar,
+} from "__support__/cypress";
 
-describe("scenarios > visualizations > chart drill", () => {
+describe("scenarios > visualizations > drillthroughs > chart drill", () => {
   before(restore);
   beforeEach(signInAsAdmin);
 
