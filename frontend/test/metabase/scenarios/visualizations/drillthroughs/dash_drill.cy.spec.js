@@ -27,11 +27,13 @@ describe("scenarios > visualizations > drillthroughs > dash_drill", () => {
 
         // Make second question scalar
         cy.visit("/question/1");
-        cy.findAllByText("Orders");
+        cy.contains("Orders");
         cy.findByText("Visualization").click();
         cy.get(".Icon-number").click();
         cy.findByText("Save").click();
-        cy.findAllByText("Save").last().click();
+        cy.findAllByText("Save")
+          .last()
+          .click();
         cy.findAllByText("Save").should("not.exist");
 
         // Add it to a new dashboard
@@ -68,7 +70,9 @@ describe("scenarios > visualizations > drillthroughs > dash_drill", () => {
         cy.findByText("6,000").should("not.exist");
 
         cy.findByText("Save").click();
-        cy.findAllByText("Save").last().click();
+        cy.findAllByText("Save")
+          .last()
+          .click();
 
         // Add it to a new dashboard
         dash_num = 3;
