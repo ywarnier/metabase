@@ -2,6 +2,7 @@ import {
   createNativeQuestion,
   restore,
   signInAsAdmin,
+  openOrdersTable,
   popover,
   modal,
 } from "__support__/cypress";
@@ -128,6 +129,27 @@ describe("scenarios > question > notebook", () => {
       cy.findByText("A_COLUMN");
       cy.findByText("Question 5 → B Column");
       cy.findByText("Showing 1 row");
+    });
+
+    it.skip("should show correct column title with foreign keys (metabase#11452)", () => {
+      // Join tables with foreign keys
+      openOrdersTable();
+      cy.get(".Icon-notebook").click();
+      cy.findByText("Join data").click();
+      cy.findByText("Reviews").click();
+      cy.findByText("Product ID").click();
+      popover().within(() => {
+        cy.findByText("Product ID").click();
+      });
+
+      // Column titles should not include 'Product'
+      cy.findByText("Summarize").click();
+      cy.findByText("Pick a column to group by").click();
+      popover().within(() => {
+        cy.get(".List-section-header")
+          .contains("Product")
+          .should("not.exist");
+      });
     });
   });
 
