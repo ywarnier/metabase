@@ -1,39 +1,39 @@
-## Getting Help
+## Obtenir de l'aide
 
 #### [FAQs](faq/start.md)
 
-Frequently asked questions about Metabase.
+Questions fréquences à propose de Metabase.
 
-#### [Troubleshooting Guide](troubleshooting-guide/index.md)
-Have a problem and need help? Start with our troubleshooting guide.
+#### [Guide de débug](troubleshooting-guide/index.md)
+Vous avez un problème et avez besoin d'aide? Démarrez dans notre guide de débug.
 
-## In-depth Guides
+## Guides détaillés
 
-#### [Users Guide](users-guide/start.md)
-This is the go-to guide on asking questions and sharing answers using Metabase. You'll learn in depth about how questions are expressed, how to chart answers, as well as how to share questions and create dashboards.
+#### [Guide utilisateurs](users-guide/start.md)
+Il s'agit *du* guide sur la génération de "questions" et le partage des réponses avec MEtabase. Vous apprendrez en profondeur comment les questions sont exprimées, comment générer des graphiques à partir des réponses ainsi que comment partager vos questions et créer des panneaux de contrôle (*dashboards*).
 
-#### [Admin Guide](administration-guide/start.md)
-This guide is for advanced users and those who will be setting up and maintaining a Metabase installation. You'll learn how to set the instance up, how to configure common settings, how to manage user accounts, and how to add databases.
+#### [Guide administrateurs](administration-guide/start.md)
+Ce guide est pour les utilisateurs avancés et ceux qui configureront et maintiendront une installation Metabase. Vous y aprrendrez comment lancer une instance, comment configurer les paramètres principaux, comment gérer les comptes utilisateurs et comment ajouter des bases de données.
 
-#### [Operations Guide](operations-guide/start.md)
-This guide contains more detailed information about how to install Metabase for production use. It covers topics like SSL termination, deploying via Docker Containers vs. Jars, as well as the tradeoffs involved.
-
-
-## Enterprise Edition
-
-#### [Enterprise Features Guide](./enterprise-guide/start.md)
-Here’s where to go for help using the features included in the Enterprise Edition of Metabase.
+#### [Guide d'opération](operations-guide/start.md)
+Ce guide contient des informations plus détaillées sur l'installation de Metabase pour l'utilisation en production. Il couvre des sujets comme les terminaisons SSL, déployer via un conteneur Docker ou Jars, ainsi que les avantages et inconvénients d'application.
 
 
-## For Developers
+## Edition Entreprise
 
-#### [Developers Guide](developers-guide.md)
-This guide covers how to contribute back to the Metabase open source project. It includes setting up a development environment, running tests, and the contribution and product process Metabase follows.
+#### [Guide des fonctionnalités Enterprise](./enterprise-guide/start.md)
+Ce guide contient de l'aide par rapport aux fonctionnalités inclues dans l'Edition Entreprise de Metabase.
 
-#### [Driver Development](developers-guide-drivers.md)
-Want to write your own database driver? This guide lists existing community drivers and shows how to get started with driver development.
 
-## Reference
+## Pour les développeurs
 
-#### [Anonymous Information Collection Reference](information-collection.md)
-This describes the anonymous usage information we collect (if you opt-in) as well as why we collect it and the ways we use it.
+#### [Guide développeurs](developers-guide.md)
+Ce guide couvre comment contribuer au projet Open Source Metabase. Il inclut la mise en place d'un environnement de développement, l'exécution de tests et les processus de contribution et de production que Metabase suit.
+
+#### [Développement de pilores](developers-guide-drivers.md)
+Vous voulez écrire votre propre pilote de base de données? Ce guide liste les pilotes communautaires existants et montre comment démarrer le développement d'un pilote.
+
+## Référence
+
+#### [Référence pour la collection d'informations anonymes](information-collection.md)
+Décrit les informations d'utilisation anonyme que nous collections (si vous le décidez) ainsi que pourquoi nous la collectons et comment nous l'utilisons.
