@@ -1,119 +1,119 @@
-# Getting Started with Metabase
+# Démarrer avec Metabase
 
-Metabase is a simple and powerful analytics tool which lets anyone learn and make decisions from their company's data. No technical knowledge required! We hope you love it.
+Metabase est un outil d'analyse décisionnelle simple et puissant qui laisse qui que ce soit apprendre et prendre des décisions à partir des données de l'organisation. Aucun bagage technique requis! Nous espérons que vous l'adopterez!
 
-## Logging in
+## Se connecter
 
-The way you log in to Metabase will depend on how you or your admin set it up, so if you don’t know where to go, just ask the person who sent you your Metabase invite.
+La manière dont vous vous connectez à Metabase dépend de comment vous ou votre administrateur l'a configuré. Si vous ne savez pas où aller, posez simplement la question à la personne qui vous a envoyé une invitation à Metabase.
 
-## The homepage
+## La page d'accueil
 
-![The home page](./images/EmptyHomepage.png)
+![La page d'accueil](./images/EmptyHomepage.png)
 
-Fresh out of the box, Metabase will show you a few things on the home page:
+De base, Metabase vous montrera quelques éléments sur la page de garde:
 
-- Some [automatic explorations](./users-guide/14-x-rays.md) of your tables that you can look at and save as a dashboard if you like any of them.
-- An area where things you or your teammates create will show up, along with a link to see all the dashboards, questions, and pulses you have.
-- A list of the databases you've connected to Metabase.
+- Quelques [explorations automatiques](./users-guide/14-x-rays.md) (radiographies) de vos tables, que vous pouvez observer et sauvegarder sur votre tableau de bord si certaines vous plaîsent.
+- Une zone où les choses que vous ou vos collègue avez créées apparaîtront, en parallèle avec un lien pour retrouver tous les tableaux de bord, questions et pulses que vous avez.
+- Une liste de bases de données que vous avez connecté à Metabase.
 
 ![Our data](./users-guide/images/our-data.png)
 
-## Asking a new question
+## Poser une question
 
-But, enough about that — let’s get to asking questions. For the next few examples, we'll be using the **Sample Dataset** that comes with Metabase.
+Assez parlé de ça, créons des questions! Pour les quelques exemples suivants, nous utiliserons un **échantillon de données** qui vient avec Metabase.
 
-Go ahead and click **Ask a question** at the top of the screen. There are several ways you can ask a question in Metabase, but we'll click on the Simple Question option for now. You'll then need to pick the table that you have a question about. Click the database that the table is in, then pick the table from the list. Once you do, you'll see the table's contents.
+Vous pouvez cliquer sur **Poser une question** dans la partie supérieure de l'écran. Il y a plusieurs manières de poser des questions dans Metabase, mais nous cliquerons simplement sur **Question simple** pour l'instant. Ensuite, vous devrez sélectionner la table par rapport à laquelle vous avez une question. Cliquez sur la base de données dans laquelle se trouve cette table, puis sélectionnez la table dans la liste. Une fois que ce sera fait, vous verrez les contenus de la table.
 
-![The Orders table](images/OrdersTable.png)
+![La table de commandes (orders)](images/OrdersTable.png)
 
-## Our first question
+## Notre première question
 
-The Orders table has a bunch of fake data in it about product orders for a made up company. Let's start with a simple question about these orders: how many orders have been placed with a subtotal (before tax) greater than \$40? More precisely, this question translates to: "How many records (or rows) are in the table 'Orders' with a value greater than 40 in the Subtotal column?”
+La table de commandes (orders) contient une série de fausses données à propos de commandes de produits pour une entreprise imaginaire. Démarrons en posant une simplem question par rapport à ces commandes: combien de commandes ont été placées avec un sous-total (avant taxes) supérieur à \$40? Ou plus précisément, cette questions se tratuit comme "Combien d'enregistrements (de lignes) se trouvent dans la table Commandes (orders) avec une valeur plus grande que 40 dans la colonne sous-total?
 
-To find out, we want to _filter_ the data by **the field we’re interested in**, which is **Subtotal**. Since each row in this table represents one order, counting how many rows there are after we’ve filtered them will give us the answer we want.
+Afin de le découvrir, nous souhaitons _filtrer_ les données par **le champ par lequel nous sommes intéressés**, ce qui est "Sous-total". Comme chaque ligne de cette table représente une commande, compter la quantité de lignes qui reste après avoir appliqué notre filtre devrait nous donner la réponse que nous cherchons.
 
-![Subtotal](images/Subtotal.png)
+![Sous-total](images/Subtotal.png)
 
-So, we click the Filter button to open up the filtering sidebar, then select Subtotal as the column to filter on, and we’ll get some options for the filter. We’ll choose **Greater than**, type the number 40 in the box, and click Add Filter.
+Donc, nous cliquons sur le bouton "Filtre" pour ouvrir la barre latérale de filtrage, puis sélectionnons "Sous-total" comme la colonne sur laquelle nous voulons filrer, et nous obtiendrons quelques options de filtre. Choisissons **Plus grand que**, tapons le nombre 40 dans la case, et cliquons sur "Ajouter un filtre".
 
-![Add Filter](images/AddFilter.png)
+![Ajouter un filtre](images/AddFilter.png)
 
-Next we need to tell Metabase what number we want to see. When we ask things like "how many," "what's the total," "what's the average," etc., we need to **summarize** our data. So we'll click the Summarize button to open the sidebar where we can pick how we want to summarize this data. The "Count of rows" metric is selected by default which is great since we want to count the total number of rows that match our filter.
+Maintenant il nous faut dire à Metabase quel nombre nous voulons voir. Quand nous demandons des choses comme "combien de..." ou "quel est le total" ou "quelle est la moyenne", etc, nous avons besoin de **résumer** nos données. Nous cliquerons donc sur le bouton Résumer pour ouvrir la barre latérale où nous pourrons sélectionner comment nous souhaitons résumer ces données. La métrique "Nombre de lignes" est sélectionnée par défaut, ce qui est très bien parce que nous voulons justement compter le nombre total de lignes qui correspondent à notre filtre.
 
-![Count](images/Count.png)
+![Nombre](images/Count.png)
 
-### And our first answer!
+### Et notre première réponse!
 
-Okay, cool — we’re ready to ask our question, so let’s click **Done**!
+OK, cool — nous sommes prêts à poser notre question. Cliquons sur **Fait**!
 
-So it looks like there were 16,309 orders, each with a subtotal greater than \$40. Nice. Another way of saying this is that there were 16,309 _records_ in the table that met the parameters we set.
+On dirait que nous avons 16309 commandes, chacune avec un sous-total supérieur à \$40. Bien. Une autre façon de dire ça c'est que nous avons 16309 _enregistrements_ dans la table, qui correspondent aux paramètres que nous avons configuré.
 
-![Count answer](images/CountAnswer.png)
+![Réponse de type nombre](images/CountAnswer.png)
 
-### Tweaking our question
+### Modifier la question
 
-Okay, so that’s pretty useful, but it would be even _more_ useful if we could know in _which months_ our customers placed these big orders. That’s not hard to do at all.
+OK, c'est fort utile, mais ce serait encore _plus_ utile si nous savions durant _quels mois_ nos clients ont placé ces grosses commandes. Et ce n'est pas compliqué non plus.
 
-If we open up the Summarize sidebar again, below where we picked our metric, there's a list of all the columns that we can use as **groupings**. The one we want is **Created At**, because this will now give us a separate total count of orders over \$40 for each month the orders were placed in (or “created at”). So we’ll select **Created At**, and Metabase immediately shows us a line chart of the orders over time.
+Si nous ouvrons le panneau Résumé à nouveau, sous l'endroit où nous avons sélectionné la métrique, il y a une liste de toutes les colonnes que nous pouvons utiliser pour **regrouper**. Celle que nous voulons, c'est **Created At** ("Créée le"), parce que cela nous donnera maintenant un nombre total de commandes au-delà de \$40 pour chaque mois pendant lequel ces commandes on été passées (ou "créées le"). Nous sélectionnerons donc **Created At** et Metabase nous montre immédiatement un graphique de type lignes des commandes au fil du temps.
 
 ![Created At](images/CreatedAt.png)
 
-If we want to quickly check the results in tabular fashion, we can click the little toggle at the bottom center of the page to toggle from our chart to the data and back again.
+Si nous souhaitons vérifier rapidement les résultats sous forme de tableau, nous pouvons cliquer sur l'icône de transition au milieu en bas de la page, pour passer de notre graphique aux données brutes, et inversément.
 
-![Created At table](images/CountByMonthTable.png)
+![Tableau Created At](images/CountByMonthTable.png)
 
-### Changing the visualization
+### Changer de visualisation
 
-Metabase can present the answers to your questions in a variety of ways. To change the visualization, just select one of the options from the **Visualization** sidebar. Click the Visualization button in the bottom-left to open it. Let’s choose the **Area** chart option.
+Metabase peut présenter les réponses à vos questions dans une variété de manières. Pour changer la visualisation, sélectionnez simplement l'une des options depuis le panneau latéral **Visualisation**. Cliquez sur le bouton _Visualisation_ en bas à gauche de la page pour l'ouvrir. Sélectionnons le graphique de type **Surface**.
 
 ![Visualization Dropdown Menu](images/VisualizationMenu.png)
 
-Sweet! Looks like business is booming — up and to the right is always good.
+Chouette! Il semblerait que les affaires vont bien - vers la droite et vers le haut est toujours un bon signe.
 
-![Area Chart](images/AreaChart.png)
+![Graphique type Surface](images/AreaChart.png)
 
-You’ll notice that some visualizations aren’t the best way to show an answer to a question. If Metabase think that's the case with a specific answer and visualization combination, that visualization choice will appear faded in the sidebar. For example, it wouldn't make sense to show the total number of orders over \$40 as a single bar graph, or as a map.
+Vous observerez que certaines visualisations ne sont pas les meilleures pour montrer une réponse à une question. Si Metabase pense que c'est le cas pour un type de visualisation spécifique combiné à votre réponse, ce choix de visualisation apparaîtra grisé dans le panneau latéral. Par exemple, cela n'aurait pas de sens de montrer le nombre total de commandes au-dessus de \$40 comme un graphique de type _barre de progression_ ou _carte_.
 
-If you want, you can try playing around with your question, like changing the number 40 to a different number. To do that, just click on the filter badge below the page title.
+Si vous le souhaitez, vous pouvez jouer un peu avec votre question, comme modifier le nombre 40 pour un nombre différent. Pour cela, cliquez simplement sur l'étiquette du filtre correspondant sous le titre de la page.
 
-## Sharing answers with others
+## Partager les réponses avec d'autres
 
-You can use Metabase all on your own, but it becomes even more useful when you start sharing your answers with other people on your team or in your organization. The first step is saving some of your questions.
+Vous pouvez utiliser Metabase par vous-même, mais cela devient vraiment plus puissant lorsque vous commencez à partager vos questions avec d'autres personne de votre équipe ou de votre organisation. La première étape est de sauvegarder quelques unes de vos questions.
 
-### Saving questions
+### Sauvegarder les questions
 
-Sometimes you’ll find yourself asking certain questions again and again, whether it’s running regular reports, looking up something about an important segment of users, or just answering the same question for other people in your company. To keep from repeating the same set of steps each time you want to ask the same question, you can save your questions to use later.
+Parfois, vous vous rendrez compte que vous posez les mêmes questions de plus en plus souvent, que ce soit pour générer des rapports réguliers, pour chercher une donnée particulière par rapport à un segment d'utilisateurs, ou simplement pour répondre à la même question pour des personnes différentes au sein de votre organisation. Pour éviter de répéter les mêmes étapes à chaque fois que vous voulez poser la même question, vous pouvez sauver vos questions pour les réutiliser plus tard.
 
-To do this, click on the **SAVE** button in the top-right of the question builder screen.
+Pour cela, cliquez sur le bouton **Sauvegader** en haut à droite de la page de l'éditeur de questions.
 
-![savebutton](images/SaveButton.png)
+![Bouton Sauvegarder](images/SaveButton.png)
 
-Metabase will take a stab at giving your question a meaningful name, but you can (and should) use your own naming convention that’ll help you and others find your questions later on, after amnesia has sunk in. You can also pick which folder, or "Collection," to save your question in.
+Metabase essaiera de donner un nom sémantiquement intéressant, mais vous pouvez (et devriez) utiliser votre propre convention de nommage pour vous aider vous et aider les autres à retrouver vos questions plus tard, une fois que l'amnésie vous aura atteint. Vous pouvez également choisir un répertoire, ou _Collection_, pour y sauvegarder votre question.
 
-![Save Question Dialog](images/SaveQuestionDialog.png)
+![Dialogue de sauvegarde de question](images/SaveQuestionDialog.png)
 
-Once you’ve saved your question, Metabase will ask if you want to add it to a new or existing dashboard. Let’s click **Create new dashboard** and give that a try. You’ll see a dialog that prompts you to create a new one and give it a name and description. Name it anything you’d like. We’ll call ours “My First Dashboard.”
+Une fois que vous avez sauvegardé votre question, Metabase vous demandera si vous voulez l'ajouter à un _Tableau de bord_ existant. Cliquons sur **Créer un nouveau tableau de bord** pour essayer cette option. Vous verrez une fenêtre de dialogue qui vous demande d'en créer un nouveau et de lui donner un nom et une description. Donnez-lui le nom que vous voulez. Nous appellerons le nôtre "My First Dashboard".
 
-![Create Dashboard](images/CreateDashboard.png)
+![Créer un tableau de bord](images/CreateDashboard.png)
 
-### Creating a dashboard
+### Créer un tableau de bord
 
-Dashboards are great when you have a set of answers that you want to view together. Your saved questions will be displayed as cards on the dashboard, which you can resize and move around to your heart’s content.
+Les tableaux de bord sont utiles quand vous avez un groupe de réponses que vous voulez visualiser ensemble. Vos questions sauvegardées seront affichées comme des cartes sur le tableau de bord, que vous pourrez ensuite redimensionner et bouger à souhait.
 
-So, after you click the button to create your dashboard, you should see your chart as a little card.
+Et donc, après avoir cliqué sur le bouton pour créer votre tableau de bord, vous devriez voir votre graphique comme une petite carte.
 
-![New Dashboard](images/NewDashboard.png)
+![Nouveau tableau de bord](images/NewDashboard.png)
 
-You can move and resize your chart so you can get it looking just how you want it. Just click **Save** in the top-right when you’re done. We’ll make ours a bit wider to let those data points breathe.
+Vous pouvez bouger et redimensionner vos graphiques afin d'obtenir l'apparence exacte que vous souhaitez. Cliquez simplement sur _Sauvegarder_ en haut à droite une fois que c'est bon. Nous rendrons le notre un peu plus large pour donner de l'espace pour respirer à nos quelques points.
 
-![Resized Chart](images/ResizedChart.png)
+![Graphique redimensionné](images/ResizedChart.png)
 
-### Sharing answers directly
+### Partager des réponses directement
 
-One other thing: once you’ve asked a question or saved a dashboard, the URL in your browser will link directly to that question or dashboard. That means you can copy and paste that URL into an email or chat and let other people see what you’ve found. This will only work if Metabase is installed on a shared server, and will require creating Metabase accounts for the people you want to share with.
+Autre chose: une fois que vous avez posé une question et que vous l'avez sauvée sur un tableau de bord, l'URL de votre navigateur vous donnera le lien direct vers cette question ou ce tableau de bord. Ça veut dire que vous pouvez copier et coller cette URL dans un e-mail ou un 'tchat et laisser d'autres personnes voir vos graphiques. Cela ne fonctionnera cependant que si Metabase a été installé sur un serveur partagé, et exigera la création de comptes Metabase pour les personnes avec qui vous souhaitez les partager.
 
 ---
 
-## That’s it!
+## C'est tout!
 
-We hope this was helpful. Want to learn more? Is your thirst for knowledge insatiable? Check out our [Users Guide](users-guide/start.md) for more in-depth explanations of the ins and outs of Metabase.
+Nous espérons que ce petit guide vous aura été utile. Vous voulez en savoir plus? Votre soif de connaissance est insatiable? Visitez notre [Guide utilisateur](users-guide/start.md) pour des explications plus en profondeur sur les tenants et aboutissants de Metabase.
