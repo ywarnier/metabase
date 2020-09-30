@@ -1,3 +1,3 @@
-## Frequently Asked Questions
+## Questions fréquentes (FAQ)
 
-This page has been moved [here](./faq/start.md).
+Cette page a été déplacée vers [ici](./faq/start.md).

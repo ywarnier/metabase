@@ -1,3 +1,3 @@
-# How do I answer questions about data that lives in multiple databases?
+# Comment répondre à des questions sur des données qui existent dans plusieurs bases de données?
 
-Metabase does not currently support joining across multiple databases. Generally, it is better to bring related data into the same database.
+Metabase ne permet pas encore de faire des jointures au travers de plusieurs bases de données. Généralement, il est préférable de rapatrier les données dans une même base de données.

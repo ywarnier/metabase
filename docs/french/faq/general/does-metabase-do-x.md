@@ -1,3 +1,3 @@
-# Does Metabase do X?
+# Est-ce que Metabase permet de X?
 
-If you’re not sure if Metabase has the capability you’re looking for, we would recommend asking in [Discourse](https://discourse.metabase.com/). If it’s something we don’t do, our friendly community may be able to point you towards a workaround, or the Github issue where the feature has been requested.
+Si vous n'êtes pas sûr(e) si Metabase possède une fonctionnalité que vous recherchez, nous vous recommandons de poser la question sur [Discourse](https://discourse.metabase.com/). Si c'est quelque chose que nous ne supportons pas, notre aimable communauté pourra vous pointer vers un moyen détourné d'y arriver, ou vers une demande sur Gihub où ce que vous cherchez a déjà été suggéré.

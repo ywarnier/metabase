@@ -1,3 +1,3 @@
-# Do we need a Data Processing Agreement with Metabase to comply with GDPR?
+# Avons-nous besoin d'un accord de traitement des données avec Metabase pour répondre aux besoins du RGPD?
 
-Metabase is a self-hosted application, and as such we have no access to any data on your instance. We only collect [anonymized usage stats](../../information-collection.md) if you opted-in during installation, but even in that case, we see no personally identifiable data. As such, we are not a data processor for the purposes of GDPR.
+Metabase est une application auto-hébergée, et en tant que telle nous n'avons pas accès aux données de votre instance. Nous collections uniquement des [statistiques d'utilisation anonymisées](../../information-collection.md) si vous avez coché la case correspondante durant l'installation, mais même dans ce cas nous ne voyons aucune information identifiable. Nous ne sommes pour autant pas une entité de traitement des données en ce qui concerne le RGPD.
