@@ -1,40 +1,40 @@
-# What languages can be used with Metabase?
+# Dans quelles langues est disponible Metabase?
 
-Thanks to our amazing user community, Metabase has been translated into a variety of languages. Due to the nature of how we collect translations (more on that in a minute), available languages may be added or removed during major releases, depending on the translation coverage.
+Grâce à notre incroyable communauté, MEtabase a été traduit dans une variété de langues. Étant donnée la nature de notre processus de collection des traductions (plus sur ce sujet dans une minute), les langues disponibles peuvent être ajoutées ou supprimées durant la publication de versions majeures, dépendant de la couverture de la traduction.
 
-## Currently available languages
+## Langues disponibles actuellement
 
-The available languages as of the 0.35 release are:
+Les langues disponibles dpeuis la version 0.35 sont:
 
-- English (default)
+- Anglais (par défaut)
 - Catalan
-- Chinese, simplified
-- Chinese, traditional
-- Dutch
-- French
-- German
-- Italian
-- Japanese
-- Persian
-- Polish
-- Portuguese
-- Russian
-- Slovak
-- Spanish
-- Turkish
+- Chinois simplifié
+- Chinois traditionnel
+- Néérlandais
+- Français
+- Allemand
+- Italien
+- Japonais
+- Perse
+- Polonais
+- Portuguais
+- Russe
+- Slovaque
+- Español
+- Turque
 
-Some translations were previously available in Metabase, but have been removed as they are no longer complete:
+Certaines traductions étaient disponibles antérieurement dans Metabase, mais ont été retirée car elles n'étaient plus suffisamment complètes:
 
-- Norwegian Bokmål
-- Ukrainian
-- Vietnamese
+- Norvégien
+- Ukrainien
+- Viétnamien
 
-## Policy for adding and removing translations
+## Directives pour ajouter et retirer des traductions
 
-The community contributes to Metabase translations on our [POEditor project](https://poeditor.com/join/project/ynjQmwSsGh). If you're a fan of Metabase and would like to see it made available in a language you're fluent in, we'd love your help!
+La communauté contribue à nos traductions Metabase sur notre [projet POEditor](https://poeditor.com/join/project/ynjQmwSsGh). Si vous êtes un fan de Metabase et que vous souhaiteriez le voir mis à disposition dans une langue dans laquelle vous parlez couramment, nous serions enchanté de vous y aider!
 
-For new translations to be added to Metabase they must reach 100%. Once they have, we'll add them in the next major or minor release of Metabase. All _existing_ translations in Metabase _must stay at 100%_ to continue being included in the next _major_ version of Metabase. This is to ensure that no one encounters a confusing mishmash of English and another language when using Metabase.
+Pour ajouter des nouvelles traductions à Metabase, elles _doivent atteindre 100%_. Une fois que c'est fait, nous les ajouterons dans notre version majeure ou mineure suivante. Toutes les _traductions existentes_ de Metabase _doivent rester traduites à 100%_ afin de continuer à être incluses dans notre version _majeure_ suivante. Ceci afin d'assurer que personne ne trouve un mix incompréhensible d'Anglais et d'une autre langue lorsqu'il/elle utilise Metabase.
 
-We understand that this is a high bar, so we commit to making sure that before each major release, any additions or changes to text in the product will be completed at least 10 calendar days before the final release ships, at which point we notify all translators that a new release will be happening soon.
+Nous comprenons que cela met la barre fort haut, c'est pour ça que nous nous assurons, avant chaque version majeure, que les additions ou modifications au texte dans l'application soient complétées au moins 10 jours calendrier avant que chaque nouvelle version finale ne soit publiée. À ce moment, nous avertissons tous les traducteurs qu'une nouvelle version sera bientôt publiée.
 
-Note that while we will only remove languages in major releases, we will add them back in for minor releases — so it's always a good time to jump in and start translating!
+Notez que si nous ne retirons les langues que lors des versions majeures, nous les rajouterons de nouveau dans une version mineure suivante, c'est donc toujours un bon moment pour démarrer une révision de traduction.

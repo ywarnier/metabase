@@ -1,3 +1,3 @@
-# How do I ask questions about my organization's data?
+# Comment poser des questions au sujet de mes données?
 
-Metabase provides a variety of ways to ask questions about your organization’s data, from using our GUI interface to construct a question, to writing a SQL query from scratch. Read all about how to ask questions [here](../../users-guide/04-asking-questions.md).
+Metabase fournit une variété de manières différentes de poser des questions au sujet des données de votre organisation, depuis l'usage de notre interface web pour construire une question jusqu'à l'écriture d'une requête SQL depuis zéro. Lisez tout au sujet de comment poser des questions [ici](../../users-guide/04-asking-questions.md).

@@ -1,3 +1,3 @@
-# When should I migrate H2 to mySQL or Postgres?
+# Quand devrais-je migrer de H2 vers MySQL ou Postgres?
 
-As soon as you’re planning on using Metabase for anything other than testing. H2 is fairly easily corruptible, so it’s better to be safe than sorry when running Metabase in production. The migration is fairly simple, and [full instructions](../../operations-guide/migrating-from-h2.md) are available.
+Aussitôt que vous planifiez d'utilisez Metabase pour autre chose que des tests. H2 est un système facilement corruptible, mieux vaut donc être à l'abri des soucis quand on fait tourner Metabase en production. La migration est relativement simple et des [instructions complètes](../../operations-guide/migrating-from-h2.md) sont à votre disposition.

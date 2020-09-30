@@ -1,7 +1,7 @@
-# How do I ask for help?
+# Comment demander de l'aide?
 
-The best place to start when asking for help are our [Troubleshooting guides](../../troubleshooting-guide/index.md). We’ve compiled a list of common problems that users experience, along with common symptoms and error messages to help you self-diagnose and resolve your issues.
+Le meilleur endroit pour démarrer dans la recherche d'aide est le [guide de débug](../../troubleshooting-guide/index.md). Nous avons compilé une liste des problèmes les plus communs que les utilisateurs expérimentent, ainsi que des symptômes communs et messages d'erreur pour vous aider à auto-diagnostiquer et résoudre vos problèmes.
 
-As hard as we’ve tried to make the documentation as complete as possible, we know that you might need additional help or have a general question about Metabase not answered here. The best way to get help in these cases is to post on our [Discourse](https://discourse.metabase.com/) and harness the power of our community to get your question answered.
+Autant nous avons essayé de rendre la documentation la plus complète possible, autant nous savons que vous pourriez avoir besoin d'aide ou avoir des questions génériques au sujet de Metabase qui ne trouveraient pas de réponse ici. La meilleur façon d'obtenir de l'aide dans ces cas-là est de poster un message sur notre portail [Discourse](https://discourse.metabase.com/) et de profiter de la puissance de notre communauté pour répondre à vos questions.
 
-If you're using the Enterprise Edition, then please contact support via email or use the [contact form](https://www.metabase.com/contact/).
+Si vous utilisez la Entreprise Edition, merci de contacter le support par e-mail ou d'utiliser notre [formulaire de contact](https://www.metabase.com/contact/).

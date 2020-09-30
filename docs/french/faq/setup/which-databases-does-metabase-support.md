@@ -1,6 +1,6 @@
-# Which databases does Metabase support?
+# Quels systèmes de bases de données sont supportés par Metabase?
 
-The following databases are officially supported by Metabase:
+Les bases de données suivantes sont officiellement supportées par Metabase:
 
 - BigQuery
 - Druid
@@ -16,4 +16,4 @@ The following databases are officially supported by Metabase:
 - SQLite
 - SQL Server
 
-You may find some [community-built database drivers](../../developers-guide-drivers.md) for databases that we do not currently support - and you are always welcome to build your own!
+Vous pourriez trouver des [pilotes élaborés par la communauté](../../developers-guide-drivers.md) pour des systèmes de bases de données que nous ne supportons pas encore officiellement - et nous vous encorageons à développer les vôtres!

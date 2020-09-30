@@ -1,8 +1,8 @@
-## Browser Support
+## Support des navigateurs
 
-### Which browsers does Metabase support?
+### Quels navigateurs supporte Metabase?
 
-We try our best to make sure Metabase works in as many browsers as possible but as this is the internet, there may be little quirks from time to time in different settings. Here are the browsers and major supported versions we know Metabase will work on (and will attempt to fix browser specific bugs on if found).
+Nous faisons de notre mieux pour nous assurer que Metabase fonctionne dans autant de navigateurs que possible mais comme il s'agit d'internet, il se pourrait que quelques petits problèmes mineurs apparaissent de temps en temps sous différentes configurations. Voici une liste des navigateurs et de leurs versions majeures supportés par Metabase selon nos connaissance (et pour lesquels nous tenterons de résoudre des problèmes éventuellement rencontrés).
 
 - Chrome (v 70+)
 - IE (v11)
@@ -10,5 +10,5 @@ We try our best to make sure Metabase works in as many browsers as possible but 
 - Firefox (v68+)
 - Safari (v11+)
 
-Metabase _may_ run perfectly fine on older versions of your browser of choice or a specific browser not listed above, but your mileage may vary. We always recommend you use the most up to date browser you can.
+Metabase _peut_ fonctionner de façon parfaite sur des versions plus anciennes du navigateur de votre choix ou sur un navigateur non spécifié ci-dessus, mais votre expérience peut varier. Nous recommandons toujours d'utiliser un navigateur le plus à jour possible.
 

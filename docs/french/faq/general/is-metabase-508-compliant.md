@@ -1,11 +1,11 @@
-# Is Metabase accessible or 508 compliant?
+# Est-ce que Metabase est accessible ou compatible avec la norme 508?
 
-Metabase strives for accessibility, but is not yet fully 508 compliant. Here is a quick summary of the specific areas where Metabase is not yet entirely compliant:
+Metabase s'efforce de penser en termes d'accessibilité, mais notre solution ne respecte pas encore la section 508 sur l'accessibilité des États-Unis. Voici un petit sommaire rapide des parties spécifiques où Metabase ne respecte pas ces directives:
 
-- The app does not have a method to allow screen readers to skip over repetitive navigation elements.
-- Metabase is extremely close but not 100% compliant at providing text equivalents for all non-text elements in the app.
-- Not all, but most, of the app's form elements are selectable by tabbing through elements.
-- Metabase has minimal transition animations in it, but we have not yet conducted testing to determine the range of flickering to verify if it is always between 2 and 55 hertz.
-- The app's data tables do not have row and column headers identified in markup.
-- We do not yet have a published description of our accessibility and compatibility features.
-- Also note that Metabase is a React-based web application, and cannot function without scripting (i.e., JavaScript) turned on.
+- L'application n'offre pas une méthode pour permettre aux lecteurs Braille de passer outre certains éléments de navigation spécifiques.
+- Metabase est extrêmement proche mais pas à 100% respectueux de la directive concernant les équivalents textuels fournis pour tous les éléments non-textuels de l'application.
+- La plupart, mais pas tous, les formulaires de l'application sont sélectionnables en utilisant la tabulation pour naviguer entre éléments.
+- Metabase inclut des animations de transition, mais nous n'avons pas encore conduit de tests pour déterminer si leur scintillement est toujours entre 2 et 55 hertz.
+- Les tableaux de données de l'application n'ont pas d'en-têtes de colonnes et de lignes identifiés par du markup.
+- Nous n'avons pas encore publié de description de nos fonctionnalités d'accessibilité et de compatibilité.
+- Notez également que Metabase est une application web basé sur REACT, et ne peux pas fonctionner sans langage de script (dans ce cas, JavaScript) disponible.

@@ -1,5 +1,5 @@
-# How do I answer questions where I need to join tables together?
+# Comment répondre à des questions qui nécessitent des jointures entre tables?
 
-If you are using a Metabase version earlier than 0.33, you will need to either write a SQL query that contains joins, or have your Metabase administrator set up foreign keys (they can read more about that [here](../../administration-guide/03-metadata-editing.md)).
+Si vous utilisez Metabase dans une version antérieure à la 0.33, vous devrez soit écrire la requête SQL qui contient les jointures, soit demander à votre administrateur Metabase de configurer des Foreign Keys pour vous (vous pouvez en lire plus à ce sujet [ici](../../administration-guide/03-metadata-editing.md)).
 
-If you are using Metabase 0.33 or above, you can perform joins using the Notebook editor. Note that you will need to choose a field to join on, or link, the two tables together. For instance, if you want to combine a Customer table with an Order table, you might select the ID field in the Customer table and link it to the customer_id field in the order table.
+Si vous utilisez Metabase 0.33 ou supérieur, vous pouvez générer des jointures en utilisant l'éditeur de questions. Notez que vous aurez besoin de choisir un champ sur lequel effectuer la jointure des deux tables. Par exemple, si vous combinez la table des consommateurs avec la table des commandes, vous pourriez sélectionner le champ ID dans la table des consommateurs et le lier au champ customer\_id dans la table des commandes.

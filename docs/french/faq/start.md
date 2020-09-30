@@ -16,7 +16,7 @@ Voici une liste des questions les plus fréquemment posées au sujet de Metabase
 
 ## Configuration et questions d'administration
 
-- [Quelles systèmes de bases de données supporte Metabase?](setup/which-databases-does-metabase-support.md)
+- [Quels systèmes de bases de données sont supportés par Metabase?](setup/which-databases-does-metabase-support.md)
 - [J'ai des problèmes pour faire tourner Metabase.](setup/i-am-having-trouble-running-metabase.md)
 - [Qu'est-ce que H2?](setup/what-is-h2.md)
 - [Quand devrais-je migrer de H2 vers MySQL ou Postgres?](setup/when-should-i-migrate-h2.md)

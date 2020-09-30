@@ -1,3 +1,3 @@
-# I'm having trouble running Metabase.
+# J'ai des problèmes pour faire tourner Metabase.
 
-If you’re having trouble running Metabase, we recommend starting with our [troubleshooting guides](../../troubleshooting-guide/index.md).
+Si vous avez des soucis pour faire fonctionner Metabase, nous vous recommandons de démarrer avec notre [guide de débug](../../troubleshooting-guide/index.md).

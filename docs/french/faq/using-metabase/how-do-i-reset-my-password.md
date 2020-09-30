@@ -1,22 +1,22 @@
-## How do I reset my password?
+## Comment réinitialiser mon mot de passe?
 
-### Using the Mac App
+### Utiliser l'application Mac
 
-If you're running the MacOS application on your laptop, you can click on the Help menu item and click `Reset Password`.
+Si vous utiliser l'application MacOS sur votre laptop, vous pouvez cliquer sur le menu d'aide puis sur `Réinitialiser le mot de passe`.
 
-### Using the web app as a normal user
+### Utiliser l'application web comme un utilisateur normal
 
-If you're having trouble logging in due to a forgotten password, click the link that reads, "I seem to have forgotten my password" in the lower-right of the log-in screen. If your Metabase administrator has already [configured your email settings](../../administration-guide/02-setting-up-email.md), you'll receive a password reset email. If email has not been configured, you will need to contact a Metabase admin to perform a password reset via Admin Panel > People.
+Si vous avez des soucis pour vous connecter à cause d'un mot de passe oublié, cliquez sur le lien qui dit "Je semble avoir oublié mon mot de passe" dans la partie inférieure the la boîte de login. Si votre administrateur Metabase a déja [configuré vos paramètres d'e-mail](../../administration-guide/02-setting-up-email.md), vous recevrez l'e-mail de réinitialisation de votre mot de passe. Si l'e-mail n'a pas été configuré, vous devrez contacter votre administrateur Metabase pour qu'il procède à une réinitialisation du mot de passe via le Panneau d'administration > Utiilisateurs.
 
-### Using the web app as an administrator
+### Utiliser l'application web en tant qu'administrateur
 
-If you're the administrator of Metabase and have access to the server console, but have forgotten the password for your admin account, then you can get a reset token, which can be used to setup a new password.
+Si vous êtes l'administrateur Metabase et que vous avez accès à la console du serveur, mais que vous avez oublié le mot de passe de votre compte administrateur, vous pouvez obtenir un token de réinitialisation, qui peut être utilisé pour générer un nouveau mot de passe.
 
-To get the token, stop the running Metabase application, then start Metabase with the parameters `reset-password email@example.com` (where "email@example.com" is the email associated with the admin account).
+Pour obtenir le token, stoppez l'instance Metabase, puis démarrez-là de nouveau avec les paramètres `reset-password email@example.com` (où "email@example.com" est l'adresse e-mail associée au compte administrateur).
 
-Example: `java -jar metabase.jar reset-password email@example.com`
+Exemple: `java -jar metabase.jar reset-password email@example.com`
 
-This will return a token and stop Metabase again, like this:
+Ceci renverra un tocken et arrêtera l'instance Metabase à nouveau, comme ceci:
 
 ```
 ...
@@ -25,8 +25,8 @@ Resetting password for email@example.com...
 OK [[[1_7db2b600-d538-4aeb-b4f7-0cf5b1970d89]]]
 ```
 
-Now start Metabase normally again and navigate to the URL where you're running it, with the following path appended: `/auth/reset_password/:token`, where ":token" is the token that was generated from the step above.
+Démarrez maintenant Metabase normalement et naviguez vers l'URL où vous le faite tourner, en rajoutant la route suivante : `/auth/reset_password/:token`, où ":token" est le token généré à l'étape supérieure.
 
-Example: `https://metabase.example.com/auth/reset_password/1_7db2b600-d538-4aeb-b4f7-0cf5b1970d89`
+Exemple: `https://metabase.example.com/auth/reset_password/1_7db2b600-d538-4aeb-b4f7-0cf5b1970d89`
 
-You should now see a page where you can input a new password for the admin account.
+Vous devriez voir à présent une page où vous pourrez introduire un nouveau mote de passe pour le compte admin.
