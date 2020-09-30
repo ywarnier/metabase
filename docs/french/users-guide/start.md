@@ -1,34 +1,34 @@
-# User Guide
+# Guide utilisateur
 
-**Some basics**
+**Les bases**
 
-- [An overview of Metabase](01-what-is-metabase.md)
-- [The basics of databases](02-database-basics.md)
+- [Un aperçu de Metabase](01-what-is-metabase.md)
+- [Les bases des bases de données](02-database-basics.md)
 
-**Exploring and asking questions**
+**Explorer et poser des questions**
 
-- [Basic exploration in Metabase](03-basic-exploration.md)
-- [Asking questions in Metabase](04-asking-questions.md)
-- [Using the notebook editor to ask custom questions](custom-questions.md)
-- [Writing custom expressions in the notebook editor](expressions.md)
-- [Using the SQL editor](writing-sql.md)
-- [How to visualize the answers to questions](05-visualizing-results.md)
+- [Exploration de base dans Metabase](03-basic-exploration.md)
+- [Poser des questions dans Metabase](04-asking-questions.md)
+- [Utiliser un éditeur pour poster des questions personnalisées](custom-questions.md)
+- [Écrire des expressions personnalisées dans l'éditeur d'expressions](expressions.md)
+- [Utiliser l'éditeur SQL](writing-sql.md)
+- [Comment visualiser les réponses aux questions](05-visualizing-results.md)
 
-**Sharing results**
+**Partager les résultats**
 
-- [Sharing and organizing your saved questions](06-sharing-answers.md)
-- [Creating dashboards](07-dashboards.md)
-- [Adding filters to dashboards](08-dashboard-filters.md)
-- [Creating dashboard charts with multiple series](09-multi-series-charting.md)
-- [Using Pulses for daily emails](10-pulses.md)
-- [Get answers in Slack with Metabot](11-metabot.md)
+- [Partager et organiser vos questions sauvegardées](06-sharing-answers.md)
+- [Créer des tableaux de bord](07-dashboards.md)
+- [Ajouter des filtres aux tableaux de bord](08-dashboard-filters.md)
+- [Créer des graphes de tableau de bord avec plusieurs séries](09-multi-series-charting.md)
+- [Utiliser des Pulses pour des notifications par e-mail](10-pulses.md)
+- [Obtenir des réponses sur Slack avec le Metabot](11-metabot.md)
 
-**More**
+**Extra**
 
-- [Referencing your data model while writing SQL](12-data-model-reference.md)
-- [Creating SQL Templates](13-sql-parameters.md)
-- [Using SQL snippets to reuse and share code](sql-snippets.md)
-- [Getting automatic insights with X-rays](14-x-rays.md)
-- [Setting and getting alerts](15-alerts.md)
+- [Référencer votre modèle de données en écrivant du SQL](12-data-model-reference.md)
+- [Créer des modèles SQL](13-sql-parameters.md)
+- [Utiliser des morceaux de SQL spour réutiliser et partager du code](sql-snippets.md)
+- [Obtenir des analyses personnalisées avec les radiographies](14-x-rays.md)
+- [Configurer et obtenir des alertes](15-alerts.md)
 
-Let's get started with an overview of [What Metabase does](01-what-is-metabase.md).
+Démarrez avec un aperçu de [ce que peut faire Metabase](01-what-is-metabase.md).
