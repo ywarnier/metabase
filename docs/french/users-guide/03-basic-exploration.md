@@ -1,59 +1,59 @@
-## Exploring in Metabase
+## L'exploration dans Metabase
 
-#### See what your teammates have made
+#### Voir ce que vos collègues ont fait
 
-As long as you're not the very first user in your team's Metabase, the easiest way to start exploring your data is by looking at dashboards, charts, and lists that your teammates have already created. The best place to start is by checking out any dashboards that might be pinned on your home page or in the collections you have access to.
+Tant que vous n'êtes pas le premier utilisateur dans votre équipe Metabase, la façon la plus simple de commencer à explorer vos données est de jeter un oeil aux tableaux de bord, aux graphiques et aux listes que vos collègues ont déjà créé. Le meilleur endroit poyur commencer est de regarder les tableaux de bord qui pourraient avoir été attachés à votre page d'accueil ou dans les collections auxquelles vous avez accès.
 
-#### Browse your data
+#### Explorer vos données
 
-Alternatively, you can dive right in to exploring the data in Metabase by clicking on one of the databases at the bottom of the home page or clicking the "Browse data" button in the top nav bar, and then selecting a database and clicking on one of its tables to see it. You can also click on the bolt icon on any table to see an automatic exploration of its data. Give it a try!
+Alternativement, vous pouvez plonger directement dans les données dans Metabase en cliquant sur l'une des bases de données en bas de page ou en cliquant sur "Explorer les données" en haut à droite, et en sélectionnant une base de données puis l'une de ses tables pour les voir. Vous pouvez également cliquer sur l'icône d'éclair sur n'importe quelle table pour visualiser une exploration automatique de ses données. Essayez-le!
 
-![Browse data](./images/browse-data.png)
+![Explorer les données](./images/browse-data.png)
 
-#### Exploring collections
+#### Explorer les collections
 
-Collections in Metabase are a lot like folders. They're where all your team's dashboards and charts are kept. To explore a collection just click on one in the "Our analytics" section of the home page, or click on `Browse all items` to see everything.
+Les collections dans Metabase sont très similaires à des répertoires. C'est là que vous retrouverez tous les graphiques et tableaux de bord de vos collègues. Pour explorer une collection, cliquez sur la section "Notre décisionnel" sur la page d'accueil, ou cliquez sur `Explorer tous les élements` pour tout voir.
 
-![A collection](./images/collection-detail.png)
+![Une collection](./images/collection-detail.png)
 
-If your teammates are cool, they'll have pinned some important dashboards or questions within your collections; if so, those important or useful items will show up nice and large at the top of a collection. Any dashboards that are pinned in the top-level, "Our Analytics" collection will also show up on the Metabase homepage.
+Si vos collègues sont cool, ils auront épinglé certains tableaux de bord ou questions importants dans vos collections; si c'est le cas, ces éléments importants ou utiles apparaîtront en grand dans la partie supérieure d'une collection. Les tableaux de bord qui ont été épinglés dans la collection "Notre décisionnel" apparaîtront aussi sur la page d'accueil de Metabase.
 
-Collections also have a list of any other items that are saved within them, as well as a list of other collections that are saved inside the current one.
+Les collections ont aussi une liste de tous les autres éléments qui y ont été sauvés, ainsi qu'une liste d'autres colletions qui ont été sauvées au sein de l'actuelle.
 
-#### Exploring dashboards
+#### Exploration des tableaux de bord
 
-Dashboards are simply collections of charts and numbers that you want to be able to refer back to regularly. [Learn more about dashboards](07-dashboards.md).
+Les tableaux de bord sont simplement des ensembles de graphiques et de nombres auxquels vous voudriez pouvoir vous référer plus tard régulièrement. [En savoir plus sur les tableaux de bord](07-dashboards.md).
 
-If you click on a part of a chart, such as a bar in a bar chart, or a dot on a line chart, you'll see a menu with actions you can take to dive deeper into that result, to branch off from it in a different direction, or to [x-ray](14-x-rays.md) it to see an automatic exploration of the thing you clicked on.
+Si vous cliquez sur une partie d'un graphique, comme une barre dans un histogramme, ou un point sur un graphique à lignes, vous verrez un menu contextuel avec des actions que vous pouvez prendre pour explorer plus en profondeur au sein de ce résultat, pour dévier dans une autre direction ou pour le [radiographier](14-x-rays.md) pour obtenir une exploration automatique des choses sur lesquelles vous avez cliqué.
 
-![Drill through](images/drill-through/drill-through.png)
+![Creuser plus profondément](images/drill-through/drill-through.png)
 
-In this example of pie orders by type over time, clicking on a dot on this line chart gives us the ability to:
+Dans cet exemple de commandes de tartes par type au fil du temps, cliquer sur un point du graphique à lignes nous donne la possibilité de :
 
-- **Zoom in** — i.e., see just the banana cream pie orders in June 2017 over time
-- **View these Orders** — which lets us see a list of banana cream pie orders in June 2017
-- **Break out by a category** — this lets us do things like see the banana cream pie orders in June 2017 broken out by the status of the customer (e.g., `new` or `VIP`, etc.) or other different aspects of the order. Different charts will have different break out options, such as Location and Time.
+- **Zoomer** — c.à.d. de voir seulement les tartes aux fraises en juin 2017
+- **Voir ces commandes** — qui vous donne une liste des commandes de tartes aux fraises en juin 2017
+- Diviser par **Catégories** — vous permet de voir, par exemple, les commandes de juin 2017 divisées par statut du client (ex. `nouveau` ou `VIP`, etc.) ou d'autres aspects de la commande. Différents graphiques auront différentes possibilités de division, comme le lieu ou l'heure.
 
-**Note that charts created with SQL don't currently have these action options.**
+**Notez que les graphiques créés avec SQL ne permettent actuellement pas ces options d'action.**
 
-Other charts as well as table cells will often also allow you to go to a filtered view of that chart or table. For example, You can click on one of the inequality symbols to see that chart where the value of the Subtotal column is less than \$100, or where the Purchased-at timestamp is greater than (i.e., after) April 1, 2017.
+D'autres graphiques ainsi que des cellules de tables vous permettront souvent également d'aller à une vue filtrée de ce graphique ou de cette table. Par exemple, vous pouvez cliquer sur l'un des symboles d'inégalité pour voir le graphique pour les lignes dont la colonne `sous-total` est inférieure à \$100, ou où le marqueur de temps `date_achat` est plus grand que le 1er avril 2017.
 
-![Inequality filters](images/drill-through/inequality-filters.png)
+![Filtres d'inégalité](images/drill-through/inequality-filters.png)
 
-Lastly, clicking on the ID of an item in a table gives you the option to go to a detail view for that single record. (E.g., you can click on a customer's ID to see the profile view for that one customer.)
+Finalement, cliquer sur l'ID d'un élément dans la table vous donnera l'option d'aller à une vue détaillée pour cet enregistrement en particulier.
 
-#### Exploring saved questions
+#### Exploration des questions sauvegardées
 
-In Metabase parlance, every chart on a dashboard is called a "question." Clicking on the title of a question on a dashboard will take you to a detail view of that question. You'll also end up at this detail view if you use one of the actions mentioned above.
+Dans le dialecte de Metabase, chaque graphique sur un tableau de bord est appelé une "question". En cliquant sur le titre d'une question dans un tableau de bord, vous pouvez voir les détails de cette question. Vous arriverez également sur cette vue en utilisant les options d'action mentionnées ci-dessus.
 
-When you're looking at the detail view of a question, you can use all the same actions mentioned above. You can also click on the headings of tables to see more options, like summing the values of a column, or filtering based on that column.
+Quand vous êtes face à la vue détaillée d'une question, vous pouvez utiliser les mêmes options d'action. Vous pouvez aussi cliquer sur les en-têtes des tables pour voir plus d'options, comme faire la somme des valeurs de la colonne ou filtrer sur base de cette colonne.
 
-One of our personal favorite ways to explore is with the Distribution option. This will show you how many rows there are in a given table, grouped by column you clicked on. So if you have a Users table, if you click on an Age column and select Distribution, you'll see a bar chart with the count of users you have in each age bracket.
+L'une de nos options d'exploration préférées est l'option de _Distribution_. Elle vous montrera combien de lignes il y a dans un table, groupées par la colonne sur laquelle vous avez cliqué. Donc si vous avez une table d'utilisateurs, si vous cliquez sur le titre de la colonne _Age_ et choisissez l'option _Distribution_, vous verrez un histogramme avec la quantité d'utilisateurs que vous avez au sein de chaque éventail d'âges.
 
-![Heading actions](images/drill-through/heading-actions.png)
+![Section d'en-tête](images/drill-through/heading-actions.png)
 
 ---
 
-## Next: Asking custom questions
+## Suivant : Poser des questions personnalisées
 
-So what do you do if you can't find an existing dashboard or question that's exactly what you're looking for? Let's learn about [asking our own new questions](04-asking-questions.md)
+Que faire si vous ne pouvez trouver un tableau de bord ou une question qui fait exactement ce que vous recherchez? Apprenez-en plus sur la façon de [poser nos propres nouvelles questions](04-asking-questions.md)

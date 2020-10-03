@@ -1,79 +1,79 @@
-## A Short Overview of Databases
+## Un court aperçu de la notion de bases de données
 
-Before you jump into working with Metabase, it's helpful to know a few key database terms.
+Avant de commencer à travailler avec Metabase, il est utile de connaître quelques termes clefs.
 
 #### Tables
 
-Fundamentally, databases are _collections of tables_. Tables contain one or more _columns_ and one or more _rows_. A row is made up of _cells_, and each cell has a _value_ that corresponds to the column it falls under.
+Fondamentalement, des bases de données sont des _collections de tables_. Les tables contiennent une ou plusieurs _colonnes_ et une ou plusieurs _lignes_ (ou _enregistrements_). Une ligne est constituée de _cellules_, et chaque cellule a une _valeur_ qui correspond à la colonne sous laquelle elle apparaît.
 
-Here's an example of a table:
+Voici un exemple de table:
 
-| Name  | Age |
+| Nom  | Age |
 | ----- | --- |
 | John  | 25  |
 | Jenny | 31  |
 
-Here, the columns are `Name` and `Age`. The first row contains two cells, one with `John` and one with `25`, corresponding to the Name and Age columns, respectively.
+Ici, les colonnes sont `Nom` et `Age`. La première ligne contient deux cellules, une avec `John` et l'autre avec `25`, correspondand aux colonnes Nom et Age, respectivement.
 
-#### Columns
+#### Colonnes
 
-All the cells in a column contain the same type of information. For example, in the sample table above, the `Name` column contains names in each cell, while the `Age` column lists ages.
+Toutes les cellules dans une colonne contiennent le même type d'information. Par exemple, dans la table d'exempple ci-dessus, la colonne `Nom` contient des noms dans chaque cellule, alors que la colonne `Age` contient des âges.
 
-Columns are also sometimes interchangeably referred to as _fields_. Each field has a type that describes what kind of data is stored in the field.
+Les colonnes sont aussi parfois connues comme des _champs_. Chaque champ a un type qui décrit la sorte de données qui sera stockée dans le champ.
 
-**Examples of types:**
+**Exemples de types:**
 
-- **String Types** (TEXT, CHAR, VCHAR, etc.) - In the world of technology, snippets of text are referred to as “strings.” (You’ve probably heard of a “string of text” before.) These fields store things like names, addresses, or anything else that is text.
+- **Types String (chaîne de caractères)** (TEXT, CHAR, VCHAR, etc.) - Dans le monde de la technologie, on se réfère aux morceaux de textes comme des “strings.” (Vous avez probablement déjà écouteé le terme “string de texte”). Ces champs stockent des choses comme des noms, des adresses, ou n'importe quoi d'autre qui est du texte.
 
-- **Numerical Types** (Integer, Float, DoubleFloat, Decimal, etc.) - These fields store numbers. Integers are whole numbers; Floats and Decimals are ways to store numbers with decimals in them. Numerical types store things like ages, bank account balances, costs, latitudes, and longitudes.
+- **Types numériques** (Integer, Float, DoubleFloat, Decimal, etc.) - Ces champs stockent des nombres. Les entiers (Integer) sont des nombres... entiers; Les flottants (Floats) et décimaux (Decimals) sont des façons de stocker des nombres qui contiennent des décimales. Les types numériques stockent des informations comme l'âge, le solde d'un compte en banque, des coûts, des latitudes, des longitudes.
 
-- **Time Types** (Timestamp, etc.) - These fields are a special number format used to store dates and times (or both), called “timestamps.” Sometimes databases store an integer timestamp which is either seconds or milliseconds, such as `00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970`. This convention allows for compact storage of timestamps.
+- **Types temporels** (Timestamp, etc.) - Ces champs sont un format spécial de nombres utilisés pour stocker des dates et des heures (ou les deux), appelés “timestamps”. Parfois les bases de données stockent des marqueurs de temps entiers, sous la forme de secondes ou de millisecondes, comme `00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970`. Cette conversion permet un stockage compact des timestamps.
 
-- **IDs** (also called **primary keys**) - This field in a table uniquely identifies each row. For example, imagine a car reservation app where you can book a car in advance. The ID of the reservation could be the reservation number, and no two reservations would share the same reservation number, allowing each reservation to be uniquely identified by its reservation number.
+- **IDs** (aussi appelés **clefs primaires** - primary keys) - Ce champ identifie de façon unique une ligne dans une table. Par exemple, imaginez une application de location de voiture dans laquelle vous pouvez réserver une voiture à l'avance. L'ID de la réservation pourrait être le numéro de réservation, et deux réservations ne partageraient *jamais* le même numéro de réservation, ce qui permet que chaque réservation soit identifiée de façon unique par son numéro.
 
-**Example**
+**Exemple**
 
-_Reservations Table_
+_Table Reservations_
 
-| Reservation ID | Name  | Age |
+| ID Reservation | Nom   | Age |
 | -------------- | ----- | --- |
 | 11             | John  | 25  |
 | 12             | Jenny | 31  |
 
-In the above table, the `Reservation ID` field is the ID (primary key). The `Name` field is a string type and the `Age` field is a numerical type (specifically an Integer).
+Dans la table ci-dessus le champ `ID Reservation` est l'ID (primary key). Le champ `Nom` est un type string et le champ `Age` est un type numérique (spécifiquement un entier).
 
-#### Relationships
+#### Relations
 
-Tables can contain references to other tables, which establishes a relationship between them.
+Les tables peuvent contenir des références à d'autres tables, ce qui établit une relation entre elles.
 
-For example, in our hypothetical car booking app’s database, we could have two tables: one for reservations (let's call it **Reservations**) and one for customers, (we'll call this one **Customers**).
+Par exemple, dans notre base de données de l'application de location de voiture, nous pourrions avoir deux tables: une por les réservations (nous l'appellerons **Reservations**) et une pour les clients (nous l'appellerons **Clients**).
 
-To connect the reservation data to the corresponding customer data, you can use a _foreign key_. A foreign key is a special kind of field in a table that references the same column in a different table. Almost always, the field that the foreign key points to is the _ID_ or _primary key_ in the other table.
+Pour connecter les données de réservation aux données du client correspondant, vous pouvez utiliser une _clef étrangère_ (foreign key). Une clef étrangère est un type spécial de champ dans un table qui référence la même colonne dans une autre table. Le champ vers lequel la clef étrangère pointe est presque toujours l'_ID_ ou la _clef primaire_ dans l'autre table.
 
-For example, in our hypothetical car booking app, we could connect each reservation in the Reservations table to the corresponding customer that made the reservation by having the `Customer` column of the reservation contain the same value as the `ID` column of the customer who made the reservation.
+Par exemple, dans notre application hypothétique de location de voiture, nous pourrions connecter chaque réservation de la table _Reservations_ au client correspondant qui a fait la réservation en faisant en sorte que la colonne `Clients` de la table `Reservations` contienne la même valeur que la colonne `ID` de la table qui contien les clients qui ont fait la réservation.
 
 **Reservations**
 
-| Customer | Date       | Car          |
+| Client   | Date       | Voiture      |
 | -------- | ---------- | ------------ |
-| 11       | 12/20/2015 | Toyota Camry |
-| 12       | 1/2/2016   | Range Rover  |
+| 11       | 20/12/2015 | Toyota Camry |
+| 12       | 02/01/2016 | Range Rover  |
 
-**Customers**
+**Clients**
 
-| ID  | Name  | Age |
+| ID  | Nom   | Age |
 | --- | ----- | --- |
 | 11  | John  | 25  |
 | 12  | Jenny | 31  |
 
-If we wanted to analyze our hypothetical app's database with Metabase, we could ask a question, like:
+Si nous souhaitions analyser la base de données de notre application hypothétique avec Metabase, nous pourrions poser une question comme :
 
-    What's the average age of all customers who made reservations in February of 2015?
+    Quel est l'âge moyen de tous les clients qui ont fait des réservations en février 2015?
 
-To do this, we’d open up the Reservation table, add a filter to only look at reservations between February 1 and February 28, 2015, and select `Average of…`. To select the average of Age specifically, we now put our foreign key to use and select Age from the _Customers_ table that our Reservations table references.
+Pour cela, nous ouvrons la table Reservations, ajoutons un filtre pour regarder uniquement les réservations entre le 1er et le 28 février 2015, et sélectionnons `Moyenne de...`. Pour sélectionner un âge spécifique, nous utilisons alors le lien (clef étrangère) pour sélectionner Age depuis la table _Clients_ que notre table _Reservations_ référence.
 
 ---
 
-## Next: Asking questions
+## Suivant : Poser des questions
 
-Now that we have a shared vocabulary and a basic understanding of databases, let's learn more about [exploring in Metabase](03-basic-exploration.md)
+Maintenant que nous avons un vocabulaire partagé et une compréhension fondamentale des bases de données, passons à l'apprentissage de [l'exploration dans Metabase](03-basic-exploration.md)

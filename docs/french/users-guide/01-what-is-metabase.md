@@ -1,55 +1,56 @@
-## What is Metabase?
+## Qu'est-ce que Metabase?
 
-Metabase is an open source business intelligence tool. It lets you ask questions about your data, and displays answers in formats that make sense, whether that's a bar graph or a detailed table.
+Metabase est un outil Open Source de Business Intelligence. Il vous permet de poser des questions au sujet de vos données, et affiche des réponses dans des formats qui ont du sens, que ce soit un graphique à barres ou un tableau détaillé.
 
-Your questions can be saved for later, making it easy to come back to them, or you can group questions into great looking dashboards. Metabase also makes it easy to share questions and dashboards with the rest of your team.
+Vos questions peuvent être sauvegardées pour plus tard, ce qui rends vos opérations plus simples quand vous y revenez, ou vous pouvez grouper vos questions sur des tableaux de bords visuellement attractifs. Metabase simplifie également le partage de vos questions et tableaux de bord avec le reste de votre équipe.
 
-## Finding your way around
+## Trouver votre chemin
 
-So, you've [gotten Metabase up and running](../operations-guide/start.md) and [connected it to your data](../administration-guide/01-managing-databases.md). It's time to give you the lay of the land.
+Vous avez un [Metabase fonctionnel](../operations-guide/start.md) et [connecté à vos données](../administration-guide/01-managing-databases.md). Il est temps de vous introduire à l'interface.
 
-### The home page
+### La page d'accueil
 
-![The home page](../images/EmptyHomepage.png)
+![La page d'accueil](../images/EmptyHomepage.png)
 
-Fresh out of the box, Metabase will show you a few things on the home page:
+Dès le début, Metabase vous montre quelques petites choses intéressantes sur la page d'accueil :
 
-- Some [automatic explorations](14-x-rays.md) of your tables that you can look at and save as a dashboard if you like any of them. (Administrators can permanently hide this section by clicking the `X` that appears on hover.)
-- An area where things you or your teammates create will show up, along with a link to see all the dashboards, questions, and pulses you have.
-- A list of the databases you've connected to Metabase. (As with x-rays, administrators can permanently hide this section by clicking the `X` that appears on hover. You can always click on "Browse Data" from the main nav bar to see your databases and tables.)
+- Quelques [analyses automatiques](14-x-rays.md) de vos tables, que vous pourrez vérifier et sauvegarder comme éléments de votre tableau de bord si elles vous sembles utiles (les administrateurs peuvent cacher cette section en permanence en cliquant sur la croix `X` qui apparaît quand vous la survolez).
+- Une zone où les choses que vos collègues ont créé apparaîtront, ainsi qu'un lien pour voir tous les tableaux de bord, questions et pulses que vous avez.
+- Une liste des bases de données que vous avez connecté à Metabase (comme pour les radiographies, les administrateurs peuvent cacher cette section en permanence en cliquant sur le `X` qui apparaît lors du survol. Vous pouvez cliquer sur "Parcourir les données" depuis la barre de navigation principale pour voir vos bases de données et tables).
 
-![Our data](./images/our-data.png)
+![Nos données](./images/our-data.png)
 
-Once you've created some [dashboards](07-dashboards.md), any of them that you pin in the main "Our analytics" collection will show up on the homepage for all of your teammates, so that when they log in to Metabase they'll know right where to go.
+Une fois que vous aurez créé quelques [tableaux de bord](07-dashboards.md), n'importe lequel d'entre eux que vous épingliez dans la collection "Notre décisionnel" apparaîtra pour tous vos collègues, comme ça dès qu'ils se connecteront à Metabase, ils sauront où aller.
 
-### Browse your data
+### Parcouris les données
 
-![Browse data](./images/browse-data.png)
+![Parcouris les données](./images/browse-data.png)
 
-If you connected your database to Metabase during setup, you'll see it listed at the bottom of the homepage along with the sample dataset that Metabase comes with. Click on a database to see its contents. You can click on a table to see its rows, or you can also click on the bolt icon to x-ray a table and see an automatic exploration of it, or click on the book icon to go to the data reference view for that table to learn more about it.
+Si vous avez connecté votre base de données à Metabase durant la configuration, vous la verrez listée en bas de la page d'accueil, avec le set de données d'exemple avec lequel Metabase est fourni.
+Cliquez sur une bases de données pour voir son contenu. Vous pouvez cliquer sur une table pour voir ses lignes, ou vous pouvez cliquer sur l'icône d'éclair pour radiographier une table et voir une analyse automatique de celle-ci, ou encore cliquer sur l'icône de livre pour aller dans la vue de référence des données pour cette table pour en apprendre plus à son sujet.
 
-### Explore your analytics
+### Explorer vos analyses
 
-As you and your team create dashboards and collections, they'll start to show up on the homepage. Click on a collection in the "Our analytics" section to see its contents, or click "browse all items" to see everything you and your team have made. [More about exploring](03-basic-exploration.md)
+Tandis que vous et votre équipe créez des tableaux de bord et des collections, ceux-ci apparaîtront progressivement sur la page d'accueil. Cliquez sur une collection dans las section "Notre décisionnel" pour voir son contenu, ou cliquez sur "Parcourir tous les éléments" pour voir tout ce que vous et votre équipe avez fait [plus de détails](03-basic-exploration.md)
 
-### Ask a question or write a query
+### Poser une question ou écrire une requête native
 
-Click the `Ask a question` button in the top-right of Metabase to start a new simple exploration of one of your tables, ask a more detailed custom question using the notebook editor, or write a new SQL query if you want to really dig in.
+Cliquez sur le bouton `Poser une question` en haut à droite de Metabase pour démarrer une exploraion simple de l'une de vos tables, poser une question personnalisée plus détaillée avec l'éditeur de questions ou écrire une requête SQL si vous souhaitez réellement aller plus loin.
 
-### Make a new dashboard or pulse
+### Créer un tableau de bord ou un pulse
 
-In Metabase, dashboards are made up of saved questions that you can arrange and resize as you please. They're a great way to track important metrics and stats that you care about. Pulses are what regularly scheduled reports are called in Metabase. They can be sent out either via email, Slack, or both.
+Dans Metabase, les tableaux de bords sont constitués de questions sauvegardées que vous avez arrangé et redimensionné selon vos besoins. Ils représentent une super manière de suivre les métriques et les statistiques importantes pour vous. Les pulses sont le nom donné aux rapports programmés périodiques dans Metabase. Ils peuvent être envoyés par e-mail, via Slack, ou les deux.
 
-To make a dashboard or pulse, click the plus (+) icon in the top-right of the main navigation bar.
+Pour créer un tableau de bord ou un pulse, cliquez sur l'icône plug (+) dans la partie supérieure droite de la barre de navigation principale.
 
-![Create menu](./images/create-menu.png)
+![Menu de création](./images/create-menu.png)
 
-### Use search to quickly find things
+### Utiliser la recherche pour trouver des choses rapidement
 
-![Search results](./images/search-results.png)
+![Résultats de recherche](./images/search-results.png)
 
-The search bar that's always present at the top of the screen lets you search through your tables, dashboards, collections, saved questions, metrics, segments, and pulses in an instant. Just type part of the title of the thing you're looking for and hit enter. You can activate the search bar from anywhere by pressing the `/` key.
+La barre de recherche qui est toujours présente au sommet de l'écran vous permet de chercher entre les tables, les tableaux de bord, les collections, les questions sauvegardées, les métriques, les segments et les pulses en un instant. Tapez simplement une partie du titre de ce que vous cherchez et taper entrée. Vous pouvez activer la barre de recherche depuis n'importe où en pressant simplement la touche `/`.
 
-## A primer on databases
+## Effleurer les bases de données
 
-To fully understand how to use Metabase, it’s useful to have at least a high-level understanding of databases, so we'll discuss [the basics of databases](02-database-basics.md) next.
+Pour pleinement comprendre comment utiliser Metabase, il est utile d'avoir au moins une compréhension de haut-niveau des bases de données. Nous discuterons donc des [bases des bases de données](02-database-basics.md) dans le prochain chapitre.
